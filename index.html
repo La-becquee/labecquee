@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Becquée — Cuisine à domicile & batch cooking Yvelines (78)</title>
+<meta name="description" content="Je prépare vos repas de la semaine directement chez vous. Cuisine à domicile et batch cooking à Mézy-sur-Seine, Meulan, Mantes-la-Jolie, Les Mureaux — Yvelines (78).">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --rose:    #9d013e;
+  --rose-d:  #7a0130;
+  --rose-l:  #fce8f0;
+  --pourpre: #6e0f2d;
+  --beige:   #e6dad1;
+  --beige-d: #d4c8be;
+  --beige-dd:#c9bdb3;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--beige); color: var(--pourpre); overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 6vw; height: 68px;
+  background: var(--beige);
+  border-bottom: 1px solid var(--beige-dd);
+  box-shadow: 0 2px 12px rgba(110,15,45,.06);
+}
+.nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+.nav-links a { font-size: .88rem; font-weight: 500; color: var(--pourpre); text-decoration: none; transition: color .15s; }
+.nav-links a:hover { color: var(--rose); }
+.nav-cta {
+  background: var(--rose) !important; color: #fff !important;
+  padding: 8px 18px; border-radius: 6px; font-weight: 600 !important;
+}
+.nav-cta:hover { background: var(--rose-d) !important; }
+@media (max-width: 640px) { .nav-links { display: none; } }
+
+/* BANDEAU FIXE */
+.fixed-panel {
+  position: fixed; right: 20px; top: 50%; transform: translateY(-50%);
+  z-index: 200; display: flex; flex-direction: column; gap: 10px;
+  background: #fff; border-radius: 14px; padding: 14px 12px;
+  box-shadow: 0 4px 24px rgba(110,15,45,.15);
+  border: 1px solid var(--beige-dd);
+}
+.fixed-panel-label { font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--beige-dd); text-align: center; margin-bottom: 2px; }
+.fixed-btn {
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  background: var(--rose); color: #fff; padding: 11px 14px; border-radius: 8px;
+  font-size: .78rem; font-weight: 700; text-decoration: none; white-space: nowrap;
+  transition: background .15s, transform .1s;
+}
+.fixed-btn:hover { background: var(--rose-d); transform: translateX(-2px); }
+.fixed-btn.pourpre { background: var(--pourpre); }
+.fixed-btn.pourpre:hover { background: #560b23; }
+@media (max-width: 1000px) { .fixed-panel { display: none; } }
+
+/* HERO */
+.hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 88vh; }
+@media (max-width: 760px) { .hero { grid-template-columns: 1fr; min-height: auto; } }
+.hero-text { padding: 80px 6vw; display: flex; flex-direction: column; justify-content: center; gap: 28px; background: var(--beige); }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--rose); }
+.hero-eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--rose); border-radius: 2px; }
+.hero h1 { font-family: 'Nunito', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.15; color: var(--pourpre); }
+.hero h1 em { font-style: italic; color: var(--rose); }
+.hero-desc { font-size: .98rem; color: var(--pourpre); line-height: 1.8; opacity: .85; max-width: 440px; }
+.hero-desc strong { color: var(--pourpre); font-weight: 700; opacity: 1; }
+.hero-btns { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-photo { position: relative; overflow: hidden; background: var(--beige-d); }
+@media (max-width: 760px) { .hero-photo { height: 300px; } }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-overlay { position: absolute; bottom: 24px; left: 24px; right: 24px; background: rgba(110,15,45,.82); backdrop-filter: blur(8px); border-radius: 12px; padding: 16px 20px; color: #fff; }
+.hero-overlay strong { font-family: 'Nunito', sans-serif; font-size: .95rem; font-weight: 700; display: block; margin-bottom: 3px; }
+.hero-overlay span { font-size: .78rem; opacity: .8; }
+
+/* BOUTONS */
+.btn-rose { display: inline-flex; align-items: center; gap: 8px; background: var(--rose); color: #fff; padding: 13px 24px; border-radius: 8px; font-weight: 600; font-size: .9rem; text-decoration: none; box-shadow: 0 4px 18px rgba(157,1,62,.22); transition: background .15s, transform .1s; }
+.btn-rose:hover { background: var(--rose-d); transform: translateY(-2px); }
+.btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--pourpre); padding: 13px 24px; border-radius: 8px; font-weight: 600; font-size: .9rem; text-decoration: none; border: 1.5px solid var(--beige-dd); transition: all .15s; }
+.btn-outline:hover { border-color: var(--rose); color: var(--rose); }
+.btn-pourpre { display: inline-flex; align-items: center; gap: 8px; background: var(--pourpre); color: #fff; padding: 13px 24px; border-radius: 8px; font-weight: 600; font-size: .9rem; text-decoration: none; transition: background .15s, transform .1s; }
+.btn-pourpre:hover { background: #560b23; transform: translateY(-2px); }
+
+/* INSPIRATIONS */
+.section-inspi { padding: 80px 6vw; background: var(--beige); }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.section-label { font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--rose); display: block; margin-bottom: 10px; }
+.section-h2 { font-family: 'Nunito', sans-serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; color: var(--pourpre); line-height: 1.2; margin-bottom: 40px; }
+.section-h2 em { font-style: italic; color: var(--rose); }
+.plats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media (max-width: 900px) { .plats-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 500px) { .plats-grid { grid-template-columns: 1fr; } }
+.plat-card { border-radius: 14px; overflow: hidden; background: var(--beige-d); transition: transform .2s, box-shadow .2s; }
+.plat-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(110,15,45,.12); }
+.plat-photo { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; background: var(--beige-dd); }
+.plat-info { padding: 12px 16px; }
+.plat-cat { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--rose); margin-bottom: 4px; }
+.plat-name { font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 700; color: var(--pourpre); }
+
+/* CONCEPT */
+.section-dark { background: var(--pourpre); padding: 80px 6vw; position: relative; overflow: hidden; }
+.section-dark::before { content: ''; position: absolute; top: -80px; right: -80px; width: 320px; height: 320px; border-radius: 50%; background: rgba(255,255,255,.04); pointer-events: none; }
+.section-dark::after { content: ''; position: absolute; bottom: -60px; left: -60px; width: 240px; height: 240px; border-radius: 50%; background: rgba(255,255,255,.04); pointer-events: none; }
+.section-dark-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 60px; align-items: start; position: relative; z-index: 1; }
+@media (max-width: 760px) { .section-dark-inner { grid-template-columns: 1fr; gap: 36px; } }
+.section-dark h2 { font-family: 'Nunito', sans-serif; font-size: clamp(1.6rem,3vw,2.2rem); font-weight: 800; line-height: 1.2; color: #fff; }
+.section-dark h2 em { font-style: italic; color: var(--rose-l); }
+.section-dark .sub { font-size: .9rem; color: rgba(255,255,255,.7); line-height: 1.7; margin-top: 12px; }
+.steps { display: flex; flex-direction: column; }
+.step { display: flex; gap: 20px; align-items: flex-start; padding: 26px 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+.step:last-child { border-bottom: none; }
+.step-num { width: 40px; height: 40px; border-radius: 8px; flex-shrink: 0; background: rgba(255,255,255,.15); color: #fff; font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+.step h3 { font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 5px; }
+.step p { font-size: .85rem; color: rgba(255,255,255,.72); line-height: 1.65; margin-bottom: 10px; }
+.step-note { font-size: .76rem; color: rgba(255,255,255,.45); font-style: italic; display: block; margin-bottom: 10px; }
+.btn-step { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.15); color: #fff; padding: 8px 16px; border-radius: 6px; font-size: .8rem; font-weight: 600; text-decoration: none; border: 1px solid rgba(255,255,255,.25); transition: background .15s; }
+.btn-step:hover { background: rgba(255,255,255,.28); }
+
+/* BÉNÉFICES */
+.section-benef { background: var(--beige); padding: 80px 6vw; }
+.benef-header { margin-bottom: 48px; }
+.benefices { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+@media (max-width: 760px) { .benefices { grid-template-columns: 1fr; } }
+.benefice { padding: 28px 24px; background: var(--beige-d); border: 1.5px solid var(--beige-dd); border-radius: 14px; display: flex; flex-direction: column; gap: 10px; transition: border-color .2s, box-shadow .2s; }
+.benefice:hover { border-color: var(--rose); box-shadow: 0 4px 20px rgba(157,1,62,.08); }
+.benefice-num { font-family: 'Nunito', sans-serif; font-size: 2rem; font-weight: 800; color: var(--pourpre); line-height: 1; }
+.benefice h4 { font-family: 'Nunito', sans-serif; font-size: .97rem; font-weight: 700; color: var(--pourpre); }
+.benefice p { font-size: .83rem; color: var(--pourpre); opacity: .7; line-height: 1.65; }
+
+/* TARIFS */
+.section-tarifs { padding: 80px 6vw; background: var(--beige-d); }
+.tarifs-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+.tarifs-intro { font-size: .93rem; color: var(--pourpre); opacity: .75; margin-bottom: 32px; }
+.btn-estimer { display: inline-flex; align-items: center; gap: 8px; background: var(--rose); color: #fff; padding: 14px 28px; border-radius: 10px; font-weight: 700; font-size: .95rem; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; box-shadow: 0 4px 16px rgba(157,1,62,.25); transition: background .15s, transform .1s; margin-bottom: 36px; }
+.btn-estimer:hover { background: var(--rose-d); transform: translateY(-2px); }
+.sim-wrap { display: none; background: var(--beige); border-radius: 20px; padding: 36px; text-align: left; animation: fadeUp .4s ease both; }
+.sim-wrap.open { display: block; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+@media (max-width:500px) { .sim-wrap { padding: 24px 16px; } }
+#sim-widget { font-family:'DM Sans',sans-serif; color:var(--pourpre); }
+.sw-sec { margin-bottom: 20px; }
+.sw-title { font-family:'Nunito',sans-serif; font-size:.93rem; font-weight:700; color:var(--rose); margin-bottom:12px; padding-bottom:6px; border-bottom:1.5px solid var(--beige-dd); }
+.sw-row { display:grid; grid-template-columns:1fr auto; align-items:center; gap:10px; margin-bottom:10px; }
+.sw-row label { font-size:.87rem; }
+.sw-sv { display:flex; align-items:center; gap:6px; }
+.sw-val { background:var(--rose); color:#fff; font-weight:700; font-size:.87rem; border-radius:7px; min-width:32px; text-align:center; padding:3px 8px; }
+.sw-btn { width:28px; height:28px; border:none; border-radius:50%; background:var(--rose-l); color:var(--rose); font-size:1.1rem; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:background .15s; }
+.sw-btn:hover { background:var(--rose); color:#fff; }
+.sw-checks { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+@media(max-width:420px){ .sw-checks { grid-template-columns:1fr; } }
+.sw-check { background:var(--beige-d); border:1.5px solid var(--beige-dd); border-radius:9px; padding:10px 12px; cursor:pointer; display:flex; align-items:flex-start; gap:8px; transition:border-color .15s,background .15s; }
+.sw-check:has(input:checked) { border-color:var(--rose); background:var(--rose-l); }
+.sw-check input { display:none; }
+.sw-ci { width:17px; height:17px; border-radius:4px; border:2px solid var(--beige-dd); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; transition:all .15s; }
+.sw-check:has(input:checked) .sw-ci { background:var(--rose); border-color:var(--rose); }
+.sw-ci svg { display:none; }
+.sw-check:has(input:checked) .sw-ci svg { display:block; }
+.sw-ct strong { font-size:.81rem; display:block; color:var(--pourpre); }
+.sw-ct span { font-size:.74rem; color:#888; }
+.sw-toggle { background:var(--beige-d); border:1.5px solid var(--beige-dd); border-radius:9px; padding:11px 13px; display:flex; align-items:center; justify-content:space-between; gap:10px; cursor:pointer; margin-bottom:9px; }
+.sw-toggle.green { border-color:var(--rose); }
+.sw-toggle:has(input:checked) { background:var(--rose-l); border-color:var(--rose); }
+.sw-ti strong { font-size:.85rem; }
+.sw-ti span { font-size:.74rem; color:#888; display:block; }
+.sw-track { display:block; width:40px; height:21px; background:var(--beige-dd); border-radius:11px; transition:background .2s; position:relative; flex-shrink:0; }
+.sw-track::after { content:''; position:absolute; width:15px; height:15px; border-radius:50%; background:#fff; top:3px; left:3px; transition:transform .2s; box-shadow:0 1px 4px rgba(0,0,0,.2); }
+.sw-toggle:has(input:checked) .sw-track { background:var(--rose); }
+.sw-toggle:has(input:checked) .sw-track::after { transform:translateX(19px); }
+.sw-result { background:var(--beige); border-radius:12px; border:1.5px solid var(--beige-dd); overflow:hidden; margin-top:6px; }
+.sw-rh { background:var(--beige-d); color:var(--rose); padding:10px 16px; font-family:'Nunito',sans-serif; font-size:.9rem; font-weight:700; border-bottom:2px solid var(--rose); }
+.sw-rl { padding:13px 16px; display:flex; flex-direction:column; gap:7px; }
+.sw-rline { display:flex; justify-content:space-between; align-items:center; font-size:.83rem; color:#888; }
+.sw-rline.tot { color:var(--pourpre); font-weight:600; }
+.sw-rline.rem { color:var(--rose); }
+.sw-rline.ci  { color:var(--pourpre); }
+.sw-rdiv { height:1px; background:var(--beige-dd); margin:3px 0; }
+.sw-rnet { padding:12px 16px; background:var(--beige-d); display:flex; justify-content:space-between; align-items:center; }
+.sw-rnl { font-family:'Nunito',sans-serif; font-size:.93rem; font-weight:700; color:var(--pourpre); }
+.sw-rnl small { display:block; font-family:'DM Sans',sans-serif; font-size:.71rem; color:#888; font-weight:400; }
+.sw-rna { font-family:'Nunito',sans-serif; font-size:1.7rem; font-weight:800; color:var(--rose); }
+.sw-pp { padding:6px 16px 11px; font-size:.75rem; color:#888; background:var(--beige-d); border-top:1px solid var(--beige-dd); }
+.sw-note { padding:8px 16px 12px; font-size:.74rem; color:#888; line-height:1.5; }
+
+/* CONTACT */
+.section-contact { padding: 80px 6vw; background: var(--beige); }
+.contact-layout { display: grid; grid-template-columns: 1fr 1.6fr; gap: 40px; align-items: start; max-width: 1000px; margin: 0 auto; }
+@media (max-width: 750px) { .contact-layout { grid-template-columns: 1fr; } }
+.info-card { background: var(--beige-d); border: 1.5px solid var(--beige-dd); border-radius: 14px; padding: 18px 20px; display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.info-icon { font-size: 1.2rem; flex-shrink: 0; }
+.info-text strong { font-size: .88rem; display: block; color: var(--pourpre); margin-bottom: 2px; }
+.info-text span { font-size: .82rem; color: var(--pourpre); opacity: .7; }
+.info-text a { color: var(--rose); text-decoration: none; font-weight: 500; }
+.zone-card { background: var(--pourpre); border-radius: 14px; padding: 20px; color: #fff; }
+.zone-card h4 { font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 10px; }
+.zone-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.zone-tag { background: rgba(255,255,255,.15); font-size: .76rem; font-weight: 500; padding: 4px 11px; border-radius: 14px; color: #fff; }
+.zone-note { font-size: .76rem; opacity: .65; margin-top: 12px; line-height: 1.5; }
+.form-wrap { background: var(--beige-d); border-radius: 20px; padding: 36px; }
+@media (max-width:500px) { .form-wrap { padding: 24px 18px; } }
+.form-title { font-family: 'Nunito', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--pourpre); margin-bottom: 6px; }
+.form-sub { font-size: .82rem; color: var(--pourpre); opacity: .65; margin-bottom: 24px; line-height: 1.5; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width:500px) { .form-grid { grid-template-columns: 1fr; } }
+.form-full { grid-column: 1/-1; }
+.form-group { display: flex; flex-direction: column; gap: 5px; }
+.form-group label { font-size: .8rem; font-weight: 600; color: var(--pourpre); }
+.form-group label span { color: var(--rose); }
+.form-group input, .form-group select, .form-group textarea { background: var(--beige); border: 1.5px solid var(--beige-dd); border-radius: 9px; padding: 10px 13px; font-family: 'DM Sans', sans-serif; font-size: .87rem; color: var(--pourpre); outline: none; width: 100%; transition: border-color .15s; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--rose); }
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-group select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 7L11 1' stroke='%236e0f2d' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 13px center; padding-right: 34px; }
+.rdv-options { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+.rdv-opt { background: var(--beige); border: 1.5px solid var(--beige-dd); border-radius: 9px; padding: 9px 13px; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: border-color .15s, background .15s; }
+.rdv-opt:has(input:checked) { border-color: var(--rose); background: var(--rose-l); }
+.rdv-opt input { display: none; }
+.rdv-dot { width: 15px; height: 15px; border-radius: 50%; border: 2px solid var(--beige-dd); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all .15s; }
+.rdv-opt:has(input:checked) .rdv-dot { background: var(--rose); border-color: var(--rose); }
+.rdv-opt:has(input:checked) .rdv-dot::after { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #fff; }
+.rdv-opt span { font-size: .82rem; color: var(--pourpre); }
+.form-submit { width: 100%; padding: 13px; margin-top: 8px; background: var(--rose); color: #fff; border: none; border-radius: 9px; font-family: 'DM Sans', sans-serif; font-size: .95rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background .15s; }
+.form-submit:hover { background: var(--rose-d); }
+.form-success { display: none; text-align: center; padding: 32px 20px; flex-direction: column; align-items: center; gap: 12px; }
+.form-success.show { display: flex; }
+.form-success h3 { font-family: 'Nunito', sans-serif; font-size: 1.15rem; color: var(--pourpre); }
+.form-success p { font-size: .87rem; color: var(--pourpre); opacity: .7; line-height: 1.6; }
+
+/* CTA FINAL */
+.section-cta { background: var(--beige-d); padding: 80px 6vw; text-align: center; }
+.section-cta h2 { font-family: 'Nunito', sans-serif; font-size: clamp(1.5rem,3vw,2rem); font-weight: 800; color: var(--pourpre); margin-bottom: 12px; }
+.section-cta p { color: var(--pourpre); opacity: .7; font-size: .95rem; margin-bottom: 32px; }
+.cta-btns { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+
+/* FOOTER */
+footer { background: var(--pourpre); color: rgba(255,255,255,.65); text-align: center; padding: 32px 6vw; font-size: .78rem; line-height: 1.9; }
+footer strong { color: rgba(255,255,255,.9); }
+footer a { color: rgba(255,255,255,.5); text-decoration: none; }
+footer a:hover { color: #fff; }
+.footer-villes { color: rgba(255,255,255,.45); font-size: .73rem; margin-top: 6px; }
+</style>
+</head>
+<body>
+
+<!-- BANDEAU FIXE -->
+<div class="fixed-panel">
+  <div class="fixed-panel-label">Je me lance</div>
+  <a href="#tarifs" class="fixed-btn">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+    Simuler une prestation
+  </a>
+  <a href="https://calendly.com/labecquee78/30min" target="_blank" class="fixed-btn pourpre">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+    Réserver un appel
+  </a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" style="display:flex; align-items:center;"><img src="logo.png" alt="La Becquée" style="height:140px; width:auto; display:block; margin-top:30px;"></a>
+  <ul class="nav-links">
+    <li><a href="#catalogue">Les plats</a></li>
+    <li><a href="#concept">Le concept</a></li>
+    <li><a href="#tarifs">Tarifs</a></li>
+    <li><a href="https://calendly.com/labecquee78/30min" target="_blank" class="nav-cta">Prendre RDV</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-text">
+    <span class="hero-eyebrow">Cuisine à domicile · Yvelines (78)</span>
+    <h1>Des repas faits maison,<br><em>préparés chez vous.</em></h1>
+    <p class="hero-desc">Je viens cuisiner <strong>une fois par semaine</strong> dans votre cuisine. Vous retrouvez le frigo plein, les repas de la semaine prêts — savoureux, sains, pensés pour votre famille.</p>
+    <div class="hero-btns">
+      <a href="https://calendly.com/labecquee78/30min" target="_blank" class="btn-rose">Prendre rendez-vous</a>
+      <a href="#concept" class="btn-outline">Découvrir le concept</a>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <img src="hero.jpg" alt="Cuisine à domicile batch cooking Yvelines 78">
+    <div class="hero-overlay">
+      <strong>Mézy-sur-Seine · Yvelines (78)</strong>
+      <span>Cuisine à domicile & batch cooking</span>
+    </div>
+  </div>
+</section>
+
+<!-- INSPIRATIONS -->
+<section class="section-inspi" id="catalogue">
+  <div class="section-inner">
+    <span class="section-label">Saison printemps</span>
+    <h2 class="section-h2">Les plats <em>inspiration du moment</em></h2>
+    <div class="plats-grid">
+      <div class="plat-card"><img class="plat-photo" src="carottes-glacees.jpg" alt="Carottes glacées"><div class="plat-info"><div class="plat-cat">Élément palette</div><div class="plat-name">Carottes glacées au miel</div></div></div>
+      <div class="plat-card"><img class="plat-photo" src="poulet-citron.jpg" alt="Poulet citron"><div class="plat-info"><div class="plat-cat">Élément palette</div><div class="plat-name">Poulet citron-estragon</div></div></div>
+      <div class="plat-card"><img class="plat-photo" src="granola.jpg" alt="Granola maison"><div class="plat-info"><div class="plat-cat">Petit-déjeuner</div><div class="plat-name">Granola maison</div></div></div>
+      <div class="plat-card"><img class="plat-photo" src="tofu-laque.jpg" alt="Tofu laqué"><div class="plat-info"><div class="plat-cat">Élément palette</div><div class="plat-name">Tofu laqué sésame-gingembre</div></div></div>
+      <div class="plat-card"><img class="plat-photo" src="frittata.jpg" alt="Frittata"><div class="plat-info"><div class="plat-cat">Plat complet</div><div class="plat-name">Frittata poireaux-chèvre</div></div></div>
+      <div class="plat-card"><img class="plat-photo" src="polpette.jpg" alt="Polpette"><div class="plat-info"><div class="plat-cat">Plat complet</div><div class="plat-name">Polpette sauce tomate</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCEPT -->
+<section class="section-dark" id="concept">
+  <div class="section-dark-inner">
+    <div>
+      <h2>Comment ça <em>fonctionne ?</em></h2>
+      <p class="sub">Pas de livraison, pas de barquettes. Je viens chez vous, je cuisine, je repars.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-content"><h3>On se parle</h3><p>Un appel de 30 minutes pour comprendre vos goûts, votre quotidien, vos besoins.</p><a href="https://calendly.com/labecquee78/30min" target="_blank" class="btn-step">Réserver cet appel →</a></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-content"><h3>Je prépare chez vous</h3><p>Je viens cuisiner chez vous après avoir fait les courses<sup>*</sup>. Je repars en laissant une cuisine propre.</p><span class="step-note">* Courses en option — +30 € / prestation</span></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-content"><h3>Vous mettez les pieds sous la table</h3><p>Vous composez ou réchauffez vos repas en quelques minutes. Chaque contenant est étiqueté avec des suggestions.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BÉNÉFICES -->
+<section class="section-benef">
+  <div class="section-inner">
+    <div class="benef-header">
+      <span class="section-label">Ce que ça change</span>
+      <h2 class="section-h2">Pour vous, <em>concrètement</em></h2>
+    </div>
+    <div class="benefices">
+      <div class="benefice"><div class="benefice-num">01</div><h4>Du temps retrouvé</h4><p>2 à 3h récupérées chaque semaine. Fini la question "qu'est-ce qu'on mange ce soir ?"</p></div>
+      <div class="benefice"><div class="benefice-num">02</div><h4>Une vraie cuisine maison</h4><p>Des produits frais, des recettes équilibrées — sans jargon, juste de la bonne cuisine.</p></div>
+      <div class="benefice"><div class="benefice-num">03</div><h4>Liberté totale</h4><p>Plats réconfortants ou éléments à assembler — chaque semaine s'adapte à vos envies.</p></div>
+      <div class="benefice"><div class="benefice-num">04</div><h4>Pensé pour toute la famille</h4><p>Des petits pots bébé aux lunchbox adultes, tout le monde trouve son compte.</p></div>
+      <div class="benefice"><div class="benefice-num">05</div><h4>Dans votre cuisine</h4><p>Je m'adapte à vos équipements et repars en laissant tout propre.</p></div>
+      <div class="benefice"><div class="benefice-num">06</div><h4>Crédit d'impôt 50%</h4><p>Service à la personne agréé — la moitié de la main d'œuvre vous est remboursée.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TARIFS -->
+<section class="section-tarifs" id="tarifs">
+  <div class="tarifs-inner">
+    <span class="section-label">Tarifs</span>
+    <h2 class="section-h2">Un tarif <em>transparent,</em><br>calculé pour vous</h2>
+    <p class="tarifs-intro">Estimez votre prestation en quelques secondes — crédit d'impôt inclus.</p>
+    <button class="btn-estimer" onclick="toggleSim(this)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+      Estimer mon tarif
+    </button>
+    <div class="sim-wrap" id="sim-wrap">
+      <div id="sim-widget">
+        <div class="sw-sec"><div class="sw-title">Votre foyer</div>
+          <div class="sw-row"><label>Adultes</label><div class="sw-sv"><button class="sw-btn" onclick="simStep('adultes',-1)">−</button><span class="sw-val" id="sim-val-adultes">2</span><button class="sw-btn" onclick="simStep('adultes',1)">+</button></div></div>
+          <div class="sw-row"><label>Enfants</label><div class="sw-sv"><button class="sw-btn" onclick="simStep('enfants',-1)">−</button><span class="sw-val" id="sim-val-enfants">0</span><button class="sw-btn" onclick="simStep('enfants',1)">+</button></div></div>
+          <div class="sw-row"><label>Bébés</label><div class="sw-sv"><button class="sw-btn" onclick="simStep('bebes',-1)">−</button><span class="sw-val" id="sim-val-bebes">0</span><button class="sw-btn" onclick="simStep('bebes',1)">+</button></div></div>
+        </div>
+        <div class="sw-sec"><div class="sw-title">Repas par semaine</div>
+          <div class="sw-row"><label>Dîners</label><div class="sw-sv"><button class="sw-btn" onclick="simStep('diners',-1)">−</button><span class="sw-val" id="sim-val-diners">4</span><button class="sw-btn" onclick="simStep('diners',1)">+</button></div></div>
+          <div class="sw-row"><label>Lunchbox</label><div class="sw-sv"><button class="sw-btn" onclick="simStep('lunchbox',-1)">−</button><span class="sw-val" id="sim-val-lunchbox">0</span><button class="sw-btn" onclick="simStep('lunchbox',1)">+</button></div></div>
+        </div>
+        <div class="sw-sec"><div class="sw-title">Options</div>
+          <div class="sw-checks">
+            <label class="sw-check"><input type="checkbox" id="sim-opt-petitdej" onchange="calcul()"><span class="sw-ci"><svg width="10" height="8" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="sw-ct"><strong>Petits-déj & goûters</strong><span>+50 €</span></span></label>
+            <label class="sw-check"><input type="checkbox" id="sim-opt-bebe" onchange="calcul()"><span class="sw-ci"><svg width="10" height="8" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="sw-ct"><strong>Petits pots bébé</strong><span>+50 €</span></span></label>
+            <label class="sw-check"><input type="checkbox" id="sim-opt-courses" onchange="calcul()"><span class="sw-ci"><svg width="10" height="8" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="sw-ct"><strong>Courses fraîches</strong><span>+30 €</span></span></label>
+            <label class="sw-check"><input type="checkbox" id="sim-opt-fourche" onchange="calcul()"><span class="sw-ci"><svg width="10" height="8" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="sw-ct"><strong>La Fourche</strong><span>+5 €/sem.</span></span></label>
+          </div>
+        </div>
+        <div class="sw-sec">
+          <label class="sw-toggle green"><div class="sw-ti"><strong>Première prestation</strong><span>−10 € offerts</span></div><label style="position:relative;flex-shrink:0;"><input type="checkbox" id="sim-toggle-premiere" onchange="calcul()" style="opacity:0;width:0;height:0;position:absolute;"><span class="sw-track"></span></label></label>
+          <label class="sw-toggle"><div class="sw-ti"><strong>Engagement 4 prestations</strong><span>−15% sur la main d'œuvre</span></div><label style="position:relative;flex-shrink:0;"><input type="checkbox" id="sim-toggle-fidelite" onchange="calcul()" style="opacity:0;width:0;height:0;position:absolute;"><span class="sw-track"></span></label></label>
+        </div>
+        <div class="sw-result">
+          <div class="sw-rh">Estimation de votre prestation</div>
+          <div class="sw-rl">
+            <div class="sw-rline">Forfait préparation & nettoyage<span>50,00 €</span></div>
+            <div class="sw-rline" id="sim-line-diners" style="display:none"><span id="sim-lbl-diners"></span><span id="sim-val-diners-price"></span></div>
+            <div class="sw-rline" id="sim-line-lunch" style="display:none"><span id="sim-lbl-lunch"></span><span id="sim-val-lunch-price"></span></div>
+            <div class="sw-rline" id="sim-line-petitdej" style="display:none">Petits-déj & goûters<span>50,00 €</span></div>
+            <div class="sw-rline" id="sim-line-bebe" style="display:none">Petits pots bébé<span>50,00 €</span></div>
+            <div class="sw-rline" id="sim-line-courses" style="display:none">Courses fraîches<span>30,00 €</span></div>
+            <div class="sw-rline" id="sim-line-fourche" style="display:none">La Fourche<span>5,00 €</span></div>
+            <div class="sw-rdiv"></div>
+            <div class="sw-rline tot">Total brut<span id="sim-val-brut">—</span></div>
+            <div class="sw-rline rem" id="sim-line-remise" style="display:none">Remise fidélité −15%<span id="sim-val-remise"></span></div>
+            <div class="sw-rline rem" id="sim-line-premiere" style="display:none">Offre bienvenue<span>−10,00 €</span></div>
+            <div class="sw-rline ci">Crédit d'impôt 50% (MO)<span id="sim-val-ci">—</span></div>
+          </div>
+          <div class="sw-rnet"><div class="sw-rnl">Coût réel après crédit d'impôt<small>par prestation · hors courses</small></div><div class="sw-rna" id="sim-val-net">—</div></div>
+          <div id="sim-parportion" class="sw-pp" style="display:none">Soit environ <strong id="sim-val-parportion" style="color:var(--rose)"></strong> préparée</div>
+          <div id="sim-note" class="sw-note"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section-contact" id="contact">
+  <div class="section-inner" style="max-width:1000px;">
+    <div style="margin-bottom:40px;">
+      <span class="section-label">Contact & RDV</span>
+      <h2 class="section-h2">On fait <em>connaissance ?</em></h2>
+      <p style="font-size:.93rem;color:var(--pourpre);opacity:.75;max-width:500px;">Un premier échange de 30 minutes — en visio ou par téléphone — sans engagement, sans pression.</p>
+    </div>
+    <div class="contact-layout">
+      <div>
+        <div class="info-card"><span class="info-icon">✉️</span><div class="info-text"><strong>Email</strong><span><a href="mailto:labecquee78@gmail.com">labecquee78@gmail.com</a></span></div></div>
+        <div class="info-card"><span class="info-icon">⏱️</span><div class="info-text"><strong>Délai de réponse</strong><span>Sous 24h, souvent bien avant !</span></div></div>
+        <div class="info-card"><span class="info-icon">📅</span><div class="info-text"><strong>Premier appel découverte</strong><span>Gratuit · 30 min · visio ou téléphone</span></div></div>
+        <div class="zone-card">
+          <h4>Zone d'intervention</h4>
+          <div class="zone-tags">
+            <span class="zone-tag">Mézy-sur-Seine</span><span class="zone-tag">Meulan</span><span class="zone-tag">Mantes-la-Jolie</span><span class="zone-tag">Les Mureaux</span><span class="zone-tag">Aubergenville</span><span class="zone-tag">Épône</span><span class="zone-tag">Limay</span><span class="zone-tag">Rosny-sur-Seine</span><span class="zone-tag">Bonnières</span><span class="zone-tag">Hardricourt</span>
+          </div>
+          <p class="zone-note">Vous n'êtes pas dans cette liste ? Contactez-moi, on trouve toujours une solution.</p>
+        </div>
+      </div>
+      <div class="form-wrap">
+        <div id="form-container">
+          <h3 class="form-title">Dites-moi en quelques mots…</h3>
+          <p class="form-sub">Je lirai votre message avant notre échange pour que nos 30 minutes soient vraiment utiles.</p>
+          <form id="contact-form" onsubmit="submitForm(event)" novalidate>
+            <div class="form-grid">
+              <div class="form-group"><label>Prénom <span>*</span></label><input type="text" name="prenom" placeholder="Marie" required></div>
+              <div class="form-group"><label>Nom <span>*</span></label><input type="text" name="nom" placeholder="Dupont" required></div>
+              <div class="form-group form-full"><label>Email <span>*</span></label><input type="email" name="email" placeholder="marie@exemple.fr" required></div>
+              <div class="form-group"><label>Commune</label><input type="text" name="commune" placeholder="Mantes-la-Jolie"></div>
+              <div class="form-group"><label>Taille du foyer</label><select name="foyer"><option value="">— Choisir —</option><option>1 personne</option><option>2 personnes</option><option>Famille (3–4 pers.)</option><option>Grande famille (5+)</option></select></div>
+              <div class="form-group form-full"><label>Contraintes alimentaires</label><input type="text" name="contraintes" placeholder="Végétarien, sans gluten…"></div>
+              <div class="form-group form-full"><label>Comment vous m'avez trouvée ?</label><select name="source"><option value="">— Choisir —</option><option>Google</option><option>Instagram</option><option>Facebook</option><option>Bouche à oreille</option><option>Autre</option></select></div>
+              <div class="form-group form-full"><label>Votre message <span>*</span></label><textarea name="message" placeholder="Dites-moi ce qui vous a donné envie de me contacter…" required></textarea></div>
+              <div class="form-group form-full"><label>Format d'échange préféré</label>
+                <div class="rdv-options">
+                  <label class="rdv-opt"><input type="radio" name="format" value="visio"><span class="rdv-dot"></span><span>Visio</span></label>
+                  <label class="rdv-opt"><input type="radio" name="format" value="telephone"><span class="rdv-dot"></span><span>Téléphone</span></label>
+                  <label class="rdv-opt"><input type="radio" name="format" value="domicile"><span class="rdv-dot"></span><span>À domicile</span></label>
+                  <label class="rdv-opt"><input type="radio" name="format" value="indifferent" checked><span class="rdv-dot"></span><span>Indifférent</span></label>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="form-submit">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Envoyer ma demande
+            </button>
+          </form>
+        </div>
+        <div class="form-success" id="form-success">
+          <div style="font-size:2rem;">🌿</div>
+          <h3>Message envoyé !</h3>
+          <p>Merci de votre confiance. Je reviens vers vous sous 24h.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="section-cta">
+  <h2>Une semaine qui vous ressemble ?</h2>
+  <p>Un premier échange gratuit de 30 minutes — sans engagement, sans pression.</p>
+  <div class="cta-btns">
+    <a href="#tarifs" class="btn-rose">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+      Simuler une prestation
+    </a>
+    <a href="https://calendly.com/labecquee78/30min" target="_blank" class="btn-pourpre">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      Prendre rendez-vous
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>La Becquée Cuisine Familiale</strong> · Mézy-sur-Seine, Yvelines (78)<br>
+  <a href="mailto:labecquee78@gmail.com">labecquee78@gmail.com</a> ·
+  Service à la personne · Crédit d'impôt 50% ·
+  <a href="#">Mentions légales</a>
+  <div class="footer-villes">Cuisine à domicile & batch cooking · Mézy-sur-Seine · Meulan-en-Yvelines · Mantes-la-Jolie · Les Mureaux · Aubergenville · Épône · Limay · Rosny-sur-Seine · Bonnières-sur-Seine · Hardricourt · Yvelines (78)</div>
+</footer>
+
+<script>
+const TARIF = { horaire:50, forfaitBase:1, minDiner:8, minLunchbox:6, forfaitPetitDej:50, forfaitBebe:50, courses:30, fourcheWeek:5, remiseFidelite:0.15, creditImpot:0.50, promoPremiereCmd:10 };
+const vals = { adultes:2, enfants:0, bebes:0, diners:4, lunchbox:0 };
+const mins = { adultes:1, enfants:0, bebes:0, diners:0, lunchbox:0 };
+const maxs = { adultes:8, enfants:8, bebes:4, diners:7, lunchbox:7 };
+
+function toggleSim(btn) {
+  const w = document.getElementById('sim-wrap');
+  w.classList.toggle('open');
+  btn.innerHTML = w.classList.contains('open')
+    ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg> Masquer`
+    : `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg> Estimer mon tarif`;
+  if (w.classList.contains('open')) calcul();
+}
+
+function eur(n) { return Math.max(0,n).toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2})+' €'; }
+function show(id,v){ const el=document.getElementById('sim-'+id); if(el) el.style.display=v?'':'none'; }
+function simStep(k,d){ vals[k]=Math.min(maxs[k],Math.max(mins[k],vals[k]+d)); document.getElementById('sim-val-'+k).textContent=vals[k]; calcul(); }
+
+function calcul(){
+  const {adultes,enfants,bebes,diners,lunchbox}=vals;
+  const tot=adultes+enfants;
+  const hMO=TARIF.forfaitBase+(TARIF.minDiner*tot*diners/60)+(TARIF.minLunchbox*adultes*lunchbox/60);
+  const MO=hMO*TARIF.horaire;
+  const oPD=document.getElementById('sim-opt-petitdej')?.checked;
+  const oBB=document.getElementById('sim-opt-bebe')?.checked;
+  const oC=document.getElementById('sim-opt-courses')?.checked;
+  const oF=document.getElementById('sim-opt-fourche')?.checked;
+  const oFi=document.getElementById('sim-toggle-fidelite')?.checked;
+  const oPC=document.getElementById('sim-toggle-premiere')?.checked;
+  const optMO=(oPD?50:0)+(oBB?50:0);
+  const optH=(oC?30:0)+(oF?5:0);
+  const tMO=MO+optMO;
+  const remise=oFi?tMO*TARIF.remiseFidelite:0;
+  const MOar=tMO-remise;
+  const brut=MOar+optH;
+  const ci=MOar*TARIF.creditImpot;
+  const net=brut-ci-(oPC?10:0);
+  const portions=(tot*diners)+(adultes*lunchbox);
+  show('line-diners',diners>0);
+  const ld=document.getElementById('sim-lbl-diners'); if(ld) ld.textContent=`Dîners (${diners}/sem. · ${tot} pers.)`;
+  const vd=document.getElementById('sim-val-diners-price'); if(vd) vd.textContent=eur((TARIF.minDiner*tot*diners/60)*TARIF.horaire);
+  show('line-lunch',lunchbox>0);
+  const ll=document.getElementById('sim-lbl-lunch'); if(ll) ll.textContent=`Lunchbox (${lunchbox}/sem. · ${adultes} adultes)`;
+  const vl=document.getElementById('sim-val-lunch-price'); if(vl) vl.textContent=eur((TARIF.minLunchbox*adultes*lunchbox/60)*TARIF.horaire);
+  show('line-petitdej',oPD); show('line-bebe',oBB); show('line-courses',oC); show('line-fourche',oF);
+  show('line-remise',oFi&&remise>0);
+  const vr=document.getElementById('sim-val-remise'); if(vr) vr.textContent='−'+eur(remise);
+  show('line-premiere',oPC);
+  document.getElementById('sim-val-brut').textContent=eur(brut);
+  document.getElementById('sim-val-ci').textContent='−'+eur(ci);
+  document.getElementById('sim-val-net').textContent=eur(net);
+  const pp=document.getElementById('sim-parportion'); if(pp) pp.style.display=(portions>0&&net>0)?'':'none';
+  const vppp=document.getElementById('sim-val-parportion'); if(vppp&&portions>0) vppp.textContent=eur(net/portions)+'/portion';
+  const note=document.getElementById('sim-note');
+  if(note) note.textContent=oC?'Les courses fraîches ne sont pas incluses dans le coût net ni dans le crédit d\'impôt.':'';
+}
+
+function submitForm(e) {
+  e.preventDefault();
+  const form = e.target;
+  const required = form.querySelectorAll('[required]');
+  let valid = true;
+  required.forEach(f => { f.style.borderColor=''; if(!f.value.trim()){ f.style.borderColor='#cf2a2a'; valid=false; } });
+  if(!valid) return;
+  const d = Object.fromEntries(new FormData(form));
+  const sujet = encodeURIComponent(`Demande de contact — ${d.prenom} ${d.nom}`);
+  const corps = encodeURIComponent(`Bonjour,\n\nNom : ${d.prenom} ${d.nom}\nEmail : ${d.email}\nCommune : ${d.commune||'—'}\nFoyer : ${d.foyer||'—'}\nContraintes : ${d.contraintes||'—'}\nFormat : ${d.format||'—'}\nSource : ${d.source||'—'}\n\nMessage :\n${d.message}`);
+  window.location.href = `mailto:labecquee78@gmail.com?subject=${sujet}&body=${corps}`;
+  document.getElementById('form-container').style.display='none';
+  document.getElementById('form-success').classList.add('show');
+}
+
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.boxShadow = window.scrollY > 20 ? '0 2px 20px rgba(110,15,45,.1)' : '';
+});
+</script>
+</body>
+</html>
