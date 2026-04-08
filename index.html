@@ -322,24 +322,26 @@ footer a:hover { color: #fff; }
   <div class="section-inner">
     <span class="section-label">Saison printemps</span>
     <h2 class="section-h2">Les plats <em>inspiration du moment</em></h2>
-    <div class="carousel">
-      <div class="slides" id="slides">
-        <div class="slide"><img src="carottes-glacees.jpg" alt="Carottes glacées"></div>
-        <div class="slide"><img src="poulet-citron.jpg" alt="Poulet citron"></div>
-        <div class="slide"><img src="granola.jpg" alt="Granola"></div>
-        <div class="slide"><img src="tofu-laque.jpg" alt="Tofu laqué"></div>
-        <div class="slide"><img src="frittata.jpg" alt="Frittata"></div>
-        <div class="slide"><img src="polpette.jpg" alt="Polpette"></div>
-        <div class="slide"><img src="amandes.jpg" alt="Amandes rôties"></div>
-        <div class="slide"><img src="petits-pains.jpg" alt="Petits pains"></div>
-        <div class="slide"><img src="poulet-croustillant.jpg" alt="Poulet croustillant"></div>
-        <div class="slide"><img src="assiette-palette.jpg" alt="Assiette palette"></div>
-        <div class="slide"><img src="granola-choco.jpg" alt="Granola chocolat"></div>
-        <div class="slide"><img src="tarte-potimarron.jpg" alt="Tarte potimarron"></div>
-        <div class="slide"><img src="soupe-pistou.jpg" alt="Soupe pistou"></div>
-        <div class="slide"><img src="cookies-choco.jpg" alt="Cookies chocolat"></div>
-        <div class="slide"><img src="carottes-rotis.jpg" alt="Carottes rôties"></div>
+    <div class="carrousel-wrap">
+      <button class="carrousel-btn prev" id="carr-prev" aria-label="Précédent">&#8249;</button>
+      <div class="carrousel-track" id="carrousel-track">
+        <div class="plat-card"><img class="plat-photo" src="carottes-glacees.jpg" alt="Carottes glacées"><div class="plat-info"><div class="plat-cat">Légumes</div><div class="plat-name">Carottes glacées</div></div></div>
+        <div class="plat-card"><img class="plat-photo" src="poulet-citron.jpg" alt="Poulet citron"><div class="plat-info"><div class="plat-cat">Volaille</div><div class="plat-name">Poulet citron</div></div></div>
+        <div class="plat-card"><img class="plat-photo" src="granola.jpg" alt="Granola"><div class="plat-info"><div class="plat-cat">Petit-déjeuner</div><div class="plat-name">Granola maison</div></div></div>
+        <div class="plat-card"><img class="plat-photo" src="tofu-laque.jpg" alt="Tofu laqué"><div class="plat-info"><div class="plat-cat">Végétarien</div><div class="plat-name">Tofu laqué</div></div></div>
+        <div class="plat-card"><img class="plat-photo" src="frittata.jpg" alt="Frittata"><div class="plat-info"><div class="plat-cat">Œufs</div><div class="plat-name">Frittata</div></div></div>
+        <div class="plat-card"><img class="plat-photo" src="polpette.jpg" alt="Polpette"><div class="plat-info"><div class="plat-cat">Viande</div><div class="plat-name">Polpette</div></div></div>
+        <div class="plat-card"><img class="plat-photo" src="amandes.jpg" alt="Amandes rôties"><div class="plat-info"><div class="plat-cat">Snack</div><div class="plat-name">Amandes rôties</div></div></div>
+        <div class="plat-card"><img class="plat-photo" src="petits-pains.jpg" alt="Petits pains"><div class="plat-info"><div class="plat-cat">Boulangerie</div><div class="plat-name">Petits pains</div></div></div>
+        <div class="plat-card"><img class="plat-photo" src="poulet-croustillant.jpg" alt="Poulet croustillant"><div class="plat-info"><div class="plat-cat">Volaille</div><div class="plat-name">Poulet croustillant</div></div></div>
+        <div class="plat-card"><img class="plat-photo" src="assiette-palette.jpg" alt="Assiette palette"><div class="plat-info"><div class="plat-cat">Viande</div><div class="plat-name">Palette mijotée</div></div></div>
+        <div class="plat-card"><img class="plat-photo" src="granola-choco.jpg" alt="Granola chocolat"><div class="plat-info"><div class="plat-cat">Petit-déjeuner</div><div class="plat-name">Granola chocolat</div></div></div>
+        <div class="plat-card"><img class="plat-photo" src="tarte-potimarron.jpg" alt="Tarte potimarron"><div class="plat-info"><div class="plat-cat">Légumes</div><div class="plat-name">Tarte potimarron</div></div></div>
+        <div class="plat-card"><img class="plat-photo" src="soupe-pistou.jpg" alt="Soupe pistou"><div class="plat-info"><div class="plat-cat">Soupes</div><div class="plat-name">Soupe au pistou</div></div></div>
+        <div class="plat-card"><img class="plat-photo" src="cookies-choco.jpg" alt="Cookies chocolat"><div class="plat-info"><div class="plat-cat">Goûter</div><div class="plat-name">Cookies chocolat</div></div></div>
+        <div class="plat-card"><img class="plat-photo" src="carottes-rotis.jpg" alt="Carottes rôties"><div class="plat-info"><div class="plat-cat">Légumes</div><div class="plat-name">Carottes rôties</div></div></div>
       </div>
+      <button class="carrousel-btn next" id="carr-next" aria-label="Suivant">&#8250;</button>
     </div>
     <div class="carrousel-dots" id="carrousel-dots"></div>
   </div>
@@ -446,7 +448,7 @@ footer a:hover { color: #fff; }
     </div>
     <div class="contact-layout">
       <div>
-        <div class="info-card"><span class="info-icon">✉️</span><div class="info-text"><strong>Email</strong><span><a href="mailto:labecquee78@gmail.com">labecquee78@gmail.com</a></span></div></div>
+        <div class="info-card"><span class="info-icon">✉️</span><div class="info-text"><strong>Email</strong><span><a href="/cdn-cgi/l/email-protection#1a767b787f796b6f7f7f2d225a7d777b737634797577"><span class="__cf_email__" data-cfemail="3854595a5d5b494d5d5d0f00785f55595154165b5755">[email&#160;protected]</span></a></span></div></div>
         <div class="info-card"><span class="info-icon">⏱️</span><div class="info-text"><strong>Délai de réponse</strong><span>Sous 24h, souvent bien avant !</span></div></div>
         <div class="info-card"><span class="info-icon">📅</span><div class="info-text"><strong>Premier appel découverte</strong><span>Gratuit · 30 min · visio ou téléphone</span></div></div>
         <div class="zone-card">
@@ -507,7 +509,7 @@ footer a:hover { color: #fff; }
       Entreprise individuelle<br>
       47 rue Erambert, 78250 Mézy-sur-Seine<br>
       SIRET : 103 054 078 00011<br>
-      Email : <a href="mailto:labecquee78@gmail.com">labecquee78@gmail.com</a>
+      Email : <a href="/cdn-cgi/l/email-protection#c3afa2a1a6a0b2b6a6a6f4fb83a4aea2aaafeda0acae"><span class="__cf_email__" data-cfemail="f995989b9c9a888c9c9ccec1b99e94989095d79a9694">[email&#160;protected]</span></a>
     </p>
 
     <h2>Hébergement</h2>
@@ -521,7 +523,7 @@ footer a:hover { color: #fff; }
     <p>L'ensemble du contenu de ce site (textes, photos, logo) est la propriété exclusive de La Becquée — Cuisine Familiale. Toute reproduction, même partielle, est interdite sans autorisation préalable.</p>
 
     <h2>Données personnelles</h2>
-    <p>Les informations collectées via le formulaire de contact sont uniquement utilisées pour répondre à vos demandes. Elles ne sont ni cédées ni vendues à des tiers. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données en contactant : <a href="mailto:labecquee78@gmail.com">labecquee78@gmail.com</a></p>
+    <p>Les informations collectées via le formulaire de contact sont uniquement utilisées pour répondre à vos demandes. Elles ne sont ni cédées ni vendues à des tiers. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données en contactant : <a href="/cdn-cgi/l/email-protection#9cf0fdfef9ffede9f9f9aba4dcfbf1fdf5f0b2fff3f1"><span class="__cf_email__" data-cfemail="1b777a797e786a6e7e7e2c235b7c767a727735787476">[email&#160;protected]</span></a></p>
 
     <h2>Cookies</h2>
     <p>Ce site n'utilise pas de cookies de traçage ni de publicité.</p>
@@ -550,7 +552,7 @@ footer a:hover { color: #fff; }
 <!-- FOOTER -->
 <footer>
   <strong>La Becquée Cuisine Familiale</strong> · Mézy-sur-Seine, Yvelines (78)<br>
-  <a href="mailto:labecquee78@gmail.com">labecquee78@gmail.com</a> ·
+  <a href="/cdn-cgi/l/email-protection#ee828f8c8b8d9f9b8b8bd9d6ae89838f8782c08d8183"><span class="__cf_email__" data-cfemail="c8a4a9aaadabb9bdadadfff088afa5a9a1a4e6aba7a5">[email&#160;protected]</span></a> ·
   Service à la personne · Crédit d'impôt 50% ·
   <a href="#" onclick="document.getElementById('mentions').style.display='block'; window.scrollTo(0,document.getElementById('mentions').offsetTop); return false;">Mentions légales</a>
   <br>
@@ -561,7 +563,7 @@ footer a:hover { color: #fff; }
   <div class="footer-villes">Cuisine à domicile & batch cooking · Yvelines (78) & Val d'Oise (95) · Mézy-sur-Seine · Meulan-en-Yvelines · Mantes-la-Jolie · Mantes-la-Ville · Les Mureaux · Aubergenville · Épône · Limay · Rosny-sur-Seine · Bonnières-sur-Seine · Hardricourt · Juziers · Verneuil-sur-Seine · Vernouillet · Triel-sur-Seine · Flins-sur-Seine · Gargenville · Vaux-sur-Seine · Chapet · Chanteloup-les-Vignes · Poissy · Conflans-Sainte-Honorine · Andrésy · Saint-Germain-en-Laye · Cergy · Pontoise · Vauréal · Menucourt · Boisemont · Courdimanche</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const TARIF = { horaire:50, forfaitBase:1, minDiner:8, minLunchbox:6, forfaitPetitDej:50, forfaitBebe:50, courses:30, fourcheWeek:5, remiseFidelite:0.15, creditImpot:0.50, promoPremiereCmd:10 };
 const vals = { adultes:2, enfants:0, bebes:0, diners:4, lunchbox:0 };
 const mins = { adultes:1, enfants:0, bebes:0, diners:0, lunchbox:0 };
@@ -635,28 +637,63 @@ function submitForm(e) {
   const sujet = encodeURIComponent(`Demande de contact — ${d.prenom} ${d.nom}`);
   const corps = encodeURIComponent(`Bonjour,\n\nNom : ${d.prenom} ${d.nom}\nEmail : ${d.email}\nCommune : ${d.commune||'—'}\nFoyer : ${d.foyer||'—'}\nContraintes : ${d.contraintes||'—'}\nFormat : ${d.format||'—'}\nSource : ${d.source||'—'}\n\nMessage :\n${d.message}`);
   window.location.href = `mailto:labecquee78@gmail.com?subject=${sujet}&body=${corps}`;
-  document.getElementById('form-container').style.display='none';
-  document.getElementById('form-success').classList.add('show');
+  const fc = document.getElementById('form-container');
+  if(fc) fc.style.display='none';
+  const fs = document.getElementById('form-success');
+  if(fs){ fs.classList.add('show'); }
 }
 
-// CARROUSEL
-let current = 0;
-const slides = document.querySelectorAll('.slide');
-const slidesEl = document.getElementById('slides');
+// ── CARROUSEL ──────────────────────────────────────────────
+(function(){
+  const track = document.getElementById('carrousel-track');
+  const dotsWrap = document.getElementById('carrousel-dots');
+  if(!track) return;
 
-function getVisible() {
-  if (window.innerWidth <= 500) return 1;
-  if (window.innerWidth <= 900) return 2;
-  return 3;
-}
+  const cards = Array.from(track.querySelectorAll('.plat-card'));
+  let current = 0;
 
-setInterval(() => {
-  current = (current + 1) % (slides.length - getVisible() + 1);
-  slidesEl.style.transform = `translateX(-${current * (100 / getVisible())}%)`;
-}, 3000);
+  function visibleCount(){
+    if(window.innerWidth <= 500) return 1;
+    if(window.innerWidth <= 900) return 2;
+    return 3;
+  }
 
-  document.querySelector('nav').style.boxShadow = window.scrollY > 20 ? '0 2px 20px rgba(110,15,45,.1)' : '';
-});
+  function maxIndex(){ return Math.max(0, cards.length - visibleCount()); }
+
+  function buildDots(){
+    dotsWrap.innerHTML = '';
+    const total = maxIndex() + 1;
+    for(let i=0;i<total;i++){
+      const b = document.createElement('button');
+      b.className = 'carrousel-dot' + (i===current?' active':'');
+      b.addEventListener('click',()=>goTo(i));
+      dotsWrap.appendChild(b);
+    }
+  }
+
+  function goTo(idx){
+    current = Math.max(0, Math.min(idx, maxIndex()));
+    // Calcul du décalage : largeur d'une carte + gap (16px)
+    const cardW = cards[0].getBoundingClientRect().width;
+    track.style.transform = `translateX(-${current * (cardW + 16)}px)`;
+    dotsWrap.querySelectorAll('.carrousel-dot').forEach((d,i)=>
+      d.classList.toggle('active', i===current));
+  }
+
+  document.getElementById('carr-prev').addEventListener('click',()=>goTo(current-1));
+  document.getElementById('carr-next').addEventListener('click',()=>goTo(current+1));
+
+  // Touch / swipe
+  let startX=0;
+  track.addEventListener('touchstart',e=>{ startX=e.touches[0].clientX; },{passive:true});
+  track.addEventListener('touchend',e=>{
+    const dx = e.changedTouches[0].clientX - startX;
+    if(Math.abs(dx)>40) goTo(current+(dx<0?1:-1));
+  },{passive:true});
+
+  buildDots();
+  window.addEventListener('resize',()=>{ buildDots(); goTo(Math.min(current,maxIndex())); });
+})();
 </script>
 </body>
 </html>
