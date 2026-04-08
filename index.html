@@ -122,8 +122,8 @@ nav {
 .carrousel-dots { display: flex; justify-content: center; gap: 7px; margin-top: 20px; }
 .carrousel-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--beige-dd); border: none; cursor: pointer; transition: background .15s; padding: 0; }
 .carrousel-dot.active { background: var(--rose); }
-.plat-card { border-radius: 0; overflow: hidden; background: var(--beige-d); transition: transform .2s, box-shadow .2s; }
-.plat-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(110,15,45,.12); }
+.plat-card { border-radius: 0; overflow: hidden; background: var(--beige-d); }
+.plat-photo { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; background: var(--beige-dd); }
 .plat-photo { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; background: var(--beige-dd); }
 .plat-photo { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; background: var(--beige-dd); }
 .plat-info { padding: 12px 16px; }
@@ -642,56 +642,52 @@ function submitForm(e) {
 }
 
 // CARROUSEL
-window.addEventListener('load', function() {
-  const track = document.getElementById('carrousel-track');
-  const dotsContainer = document.getElementById('carrousel-dots');
-  let currentIndex = 0;
-  let autoplayTimer;
+(function() {
+  var track, dots, idx = 0, timer, cards, visible, total;
 
-  function getVisible() {
-    if (window.innerWidth <= 500) return 1;
-    if (window.innerWidth <= 900) return 2;
-    return 3;
+  function init() {
+    track = document.getElementById('carrousel-track');
+    dots = document.getElementById('carrousel-dots');
+    if (!track) return;
+    cards = track.children.length;
+    update();
+    buildDots();
+    start();
   }
 
-  function totalSlides() {
-    return Math.ceil(track.children.length / getVisible());
+  function update() {
+    visible = window.innerWidth <= 500 ? 1 : window.innerWidth <= 900 ? 2 : 3;
+    total = Math.ceil(cards / visible);
+    if (idx >= total) idx = 0;
+    move();
+  }
+
+  function move() {
+    track.style.transform = 'translateX(-' + (idx * visible * (100 / visible)) + '%)';
+    document.querySelectorAll('.carrousel-dot').forEach(function(d, i) {
+      d.classList.toggle('active', i === idx);
+    });
   }
 
   function buildDots() {
-    dotsContainer.innerHTML = '';
-    for (let i = 0; i < totalSlides(); i++) {
-      const d = document.createElement('button');
-      d.className = 'carrousel-dot' + (i === currentIndex ? ' active' : '');
-      d.onclick = () => { goTo(i); resetAutoplay(); };
-      dotsContainer.appendChild(d);
+    dots.innerHTML = '';
+    for (var i = 0; i < total; i++) {
+      var d = document.createElement('button');
+      d.className = 'carrousel-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('data-i', i);
+      d.onclick = function() { idx = +this.getAttribute('data-i'); move(); reset(); };
+      dots.appendChild(d);
     }
   }
 
-  function goTo(index) {
-    const total = totalSlides();
-    currentIndex = (index + total) % total;
-    const card = track.children[0];
-    const cardWidth = card.offsetWidth + 16;
-    track.style.transform = `translateX(-${currentIndex * getVisible() * cardWidth}px)`;
-    document.querySelectorAll('.carrousel-dot').forEach((d, i) => d.classList.toggle('active', i === currentIndex));
-  }
+  function start() { timer = setInterval(function() { idx = (idx + 1) % total; move(); }, 3000); }
+  function reset() { clearInterval(timer); start(); }
 
-  window.moveCarrousel = function(dir) { goTo(currentIndex + dir); resetAutoplay(); };
-
-  function startAutoplay() {
-    autoplayTimer = setInterval(() => goTo(currentIndex + 1), 3000);
-  }
-
-  function resetAutoplay() {
-    clearInterval(autoplayTimer);
-    startAutoplay();
-  }
-
-  window.addEventListener('resize', () => { currentIndex = 0; buildDots(); goTo(0); });
-  buildDots();
-  startAutoplay();
-});
+  window.moveCarrousel = function(dir) { idx = (idx + dir + total) % total; move(); reset(); };
+  window.addEventListener('resize', function() { update(); buildDots(); });
+  document.addEventListener('DOMContentLoaded', init);
+  if (document.readyState !== 'loading') init();
+})();
 
   document.querySelector('nav').style.boxShadow = window.scrollY > 20 ? '0 2px 20px rgba(110,15,45,.1)' : '';
 });
