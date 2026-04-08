@@ -122,7 +122,7 @@ nav {
 .carrousel-dots { display: flex; justify-content: center; gap: 7px; margin-top: 20px; }
 .carrousel-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--beige-dd); border: none; cursor: pointer; transition: background .15s; padding: 0; }
 .carrousel-dot.active { background: var(--rose); }
-.plat-card { border-radius: 14px; overflow: hidden; background: var(--beige-d); transition: transform .2s, box-shadow .2s; }
+.plat-card { border-radius: 0; overflow: hidden; background: var(--beige-d); transition: transform .2s, box-shadow .2s; }
 .plat-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(110,15,45,.12); }
 .plat-photo { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; background: var(--beige-dd); }
 .plat-photo { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; background: var(--beige-dd); }
@@ -642,54 +642,56 @@ function submitForm(e) {
 }
 
 // CARROUSEL
-const track = document.getElementById('carrousel-track');
-const dotsContainer = document.getElementById('carrousel-dots');
-let currentIndex = 0;
-let autoplayTimer;
+window.addEventListener('load', function() {
+  const track = document.getElementById('carrousel-track');
+  const dotsContainer = document.getElementById('carrousel-dots');
+  let currentIndex = 0;
+  let autoplayTimer;
 
-function getVisible() {
-  if (window.innerWidth <= 500) return 1;
-  if (window.innerWidth <= 900) return 2;
-  return 3;
-}
-
-function totalSlides() {
-  return Math.ceil(track.children.length / getVisible());
-}
-
-function buildDots() {
-  dotsContainer.innerHTML = '';
-  for (let i = 0; i < totalSlides(); i++) {
-    const d = document.createElement('button');
-    d.className = 'carrousel-dot' + (i === currentIndex ? ' active' : '');
-    d.onclick = () => { goTo(i); resetAutoplay(); };
-    dotsContainer.appendChild(d);
+  function getVisible() {
+    if (window.innerWidth <= 500) return 1;
+    if (window.innerWidth <= 900) return 2;
+    return 3;
   }
-}
 
-function goTo(index) {
-  const total = totalSlides();
-  currentIndex = (index + total) % total;
-  const cardWidth = track.children[0].offsetWidth + 16;
-  track.style.transform = `translateX(-${currentIndex * getVisible() * cardWidth}px)`;
-  document.querySelectorAll('.carrousel-dot').forEach((d, i) => d.classList.toggle('active', i === currentIndex));
-}
+  function totalSlides() {
+    return Math.ceil(track.children.length / getVisible());
+  }
 
-function moveCarrousel(dir) { goTo(currentIndex + dir); resetAutoplay(); }
+  function buildDots() {
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < totalSlides(); i++) {
+      const d = document.createElement('button');
+      d.className = 'carrousel-dot' + (i === currentIndex ? ' active' : '');
+      d.onclick = () => { goTo(i); resetAutoplay(); };
+      dotsContainer.appendChild(d);
+    }
+  }
 
-function startAutoplay() {
-  autoplayTimer = setInterval(() => goTo(currentIndex + 1), 3000);
-}
+  function goTo(index) {
+    const total = totalSlides();
+    currentIndex = (index + total) % total;
+    const card = track.children[0];
+    const cardWidth = card.offsetWidth + 16;
+    track.style.transform = `translateX(-${currentIndex * getVisible() * cardWidth}px)`;
+    document.querySelectorAll('.carrousel-dot').forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+  }
 
-function resetAutoplay() {
-  clearInterval(autoplayTimer);
+  window.moveCarrousel = function(dir) { goTo(currentIndex + dir); resetAutoplay(); };
+
+  function startAutoplay() {
+    autoplayTimer = setInterval(() => goTo(currentIndex + 1), 3000);
+  }
+
+  function resetAutoplay() {
+    clearInterval(autoplayTimer);
+    startAutoplay();
+  }
+
+  window.addEventListener('resize', () => { currentIndex = 0; buildDots(); goTo(0); });
+  buildDots();
   startAutoplay();
-}
-
-window.addEventListener('resize', () => { currentIndex = 0; buildDots(); goTo(0); });
-buildDots();
-startAutoplay();
-
+});
 
   document.querySelector('nav').style.boxShadow = window.scrollY > 20 ? '0 2px 20px rgba(110,15,45,.1)' : '';
 });
