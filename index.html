@@ -643,50 +643,68 @@ function submitForm(e) {
 
 // CARROUSEL
 (function() {
-  var track, dots, idx = 0, timer, cards, visible, total;
+  var idx = 0, timer;
 
-  function init() {
-    track = document.getElementById('carrousel-track');
-    dots = document.getElementById('carrousel-dots');
-    if (!track) return;
-    cards = track.children.length;
-    update();
-    buildDots();
-    start();
+  function vis() {
+    return window.innerWidth <= 500 ? 1 : window.innerWidth <= 900 ? 2 : 3;
   }
 
-  function update() {
-    visible = window.innerWidth <= 500 ? 1 : window.innerWidth <= 900 ? 2 : 3;
-    total = Math.ceil(cards / visible);
-    if (idx >= total) idx = 0;
-    move();
+  function cards() {
+    return document.getElementById('carrousel-track').children.length;
   }
 
-  function move() {
-    track.style.transform = 'translateX(-' + (idx * visible * (100 / visible)) + '%)';
+  function go(n) {
+    var t = document.getElementById('carrousel-track');
+    if (!t) return;
+    var max = cards() - vis();
+    idx = Math.max(0, Math.min(n, max));
+    t.style.transform = 'translateX(-' + (idx * (100 / vis())) + '%)';
     document.querySelectorAll('.carrousel-dot').forEach(function(d, i) {
       d.classList.toggle('active', i === idx);
     });
   }
 
   function buildDots() {
-    dots.innerHTML = '';
-    for (var i = 0; i < total; i++) {
+    var dc = document.getElementById('carrousel-dots');
+    if (!dc) return;
+    dc.innerHTML = '';
+    var n = cards() - vis() + 1;
+    for (var i = 0; i < n; i++) {
       var d = document.createElement('button');
       d.className = 'carrousel-dot' + (i === 0 ? ' active' : '');
       d.setAttribute('data-i', i);
-      d.onclick = function() { idx = +this.getAttribute('data-i'); move(); reset(); };
-      dots.appendChild(d);
+      d.onclick = function() { go(+this.getAttribute('data-i')); reset(); };
+      dc.appendChild(d);
     }
   }
 
-  function start() { timer = setInterval(function() { idx = (idx + 1) % total; move(); }, 3000); }
+  function next() {
+    var max = cards() - vis();
+    go(idx >= max ? 0 : idx + 1);
+  }
+
+  function start() { timer = setInterval(next, 3000); }
   function reset() { clearInterval(timer); start(); }
 
-  window.moveCarrousel = function(dir) { idx = (idx + dir + total) % total; move(); reset(); };
-  window.addEventListener('resize', function() { update(); buildDots(); });
-  document.addEventListener('DOMContentLoaded', init);
-  if (document.readyState !== 'loading') init();
+  window.moveCarrousel = function(dir) {
+    var max = cards() - vis();
+    go(dir > 0 ? (idx >= max ? 0 : idx + 1) : (idx <= 0 ? max : idx - 1));
+    reset();
+  };
+
+  function init() {
+    buildDots();
+    go(0);
+    start();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  window.addEventListener('resize', function() { buildDots(); go(0); });
 })();
 
   document.querySelector('nav').style.boxShadow = window.scrollY > 20 ? '0 2px 20px rgba(110,15,45,.1)' : '';
