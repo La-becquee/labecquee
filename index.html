@@ -356,7 +356,7 @@ footer a:hover { color: #fff; }
     </div>
     <div class="steps">
       <div class="step"><div class="step-num">1</div><div class="step-content"><h3>On se parle</h3><p>Un appel de 30 minutes pour comprendre vos goûts, votre quotidien, vos besoins.</p><a href="https://calendly.com/labecquee78/30min" target="_blank" class="btn-step">Réserver cet appel →</a></div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-content"><h3>Je prépare chez vous</h3><p>Je viens cuisiner chez vous après avoir fait les courses<sup>*</sup>. Je repars en laissant une cuisine propre.</p><span class="step-note">* Courses en option — +30 € / prestation</span></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-content"><h3>Je prépare chez vous</h3><p>Je viens cuisiner chez vous après avoir fait les courses<sup>*</sup>. Je repars en laissant une cuisine propre.</p><span class="step-note">* Courses en option — +50 € / prestation</span></div></div>
       <div class="step"><div class="step-num">3</div><div class="step-content"><h3>Vous mettez les pieds sous la table</h3><p>Vous composez ou réchauffez vos repas en quelques minutes. Chaque contenant est étiqueté avec des suggestions.</p></div></div>
     </div>
   </div>
@@ -397,35 +397,31 @@ footer a:hover { color: #fff; }
           <div class="sw-row"><label>Enfants</label><div class="sw-sv"><button class="sw-btn" onclick="simStep('enfants',-1)">−</button><span class="sw-val" id="sim-val-enfants">0</span><button class="sw-btn" onclick="simStep('enfants',1)">+</button></div></div>
           <div class="sw-row"><label>Bébés</label><div class="sw-sv"><button class="sw-btn" onclick="simStep('bebes',-1)">−</button><span class="sw-val" id="sim-val-bebes">0</span><button class="sw-btn" onclick="simStep('bebes',1)">+</button></div></div>
         </div>
-        <div class="sw-sec"><div class="sw-title">Repas par semaine</div>
-          <div class="sw-row"><label>Dîners</label><div class="sw-sv"><button class="sw-btn" onclick="simStep('diners',-1)">−</button><span class="sw-val" id="sim-val-diners">4</span><button class="sw-btn" onclick="simStep('diners',1)">+</button></div></div>
-          <div class="sw-row"><label>Lunchbox</label><div class="sw-sv"><button class="sw-btn" onclick="simStep('lunchbox',-1)">−</button><span class="sw-val" id="sim-val-lunchbox">0</span><button class="sw-btn" onclick="simStep('lunchbox',1)">+</button></div></div>
+        <div class="sw-sec"><div class="sw-title">Repas à préparer</div>
+          <div class="sw-row"><label>Nombre de repas</label><div class="sw-sv"><button class="sw-btn" onclick="simStep('repas',-1)">−</button><span class="sw-val" id="sim-val-repas">5</span><button class="sw-btn" onclick="simStep('repas',1)">+</button></div></div>
         </div>
         <div class="sw-sec"><div class="sw-title">Options</div>
           <div class="sw-checks">
-            <label class="sw-check"><input type="checkbox" id="sim-opt-petitdej" onchange="calcul()"><span class="sw-ci"><svg width="10" height="8" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="sw-ct"><strong>Petits-déj & goûters</strong><span>+50 €</span></span></label>
-            <label class="sw-check"><input type="checkbox" id="sim-opt-bebe" onchange="calcul()"><span class="sw-ci"><svg width="10" height="8" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="sw-ct"><strong>Petits pots bébé</strong><span>+50 €</span></span></label>
-            <label class="sw-check"><input type="checkbox" id="sim-opt-courses" onchange="calcul()"><span class="sw-ci"><svg width="10" height="8" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="sw-ct"><strong>Courses fraîches</strong><span>+30 €</span></span></label>
-            <label class="sw-check" id="fourche-option" style="display:none"><input type="checkbox" id="sim-opt-fourche" onchange="calcul()"><span class="sw-ci"><svg width="10" height="8" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="sw-ct"><strong>La Fourche <span class="tooltip-wrap">ℹ️<span class="tooltip">Je me charge de vos courses mensuelles de produits bio via La Fourche, pour vous simplifier encore plus le quotidien.</span></span></strong><span>+5 €/sem.</span></span></label>
+            <label class="sw-check"><input type="checkbox" id="sim-opt-petitdej" onchange="calcul()"><span class="sw-ci"><svg width="10" height="8" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="sw-ct"><strong>Petit-déj & goûters</strong><span id="sim-lbl-pdj-prix">20–50 €</span></span></label>
+            <label class="sw-check" id="sim-opt-bebe-wrap" style="display:none"><input type="checkbox" id="sim-opt-bebe" onchange="calcul()"><span class="sw-ci"><svg width="10" height="8" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="sw-ct"><strong>Petits pots bébé</strong><span>+50 €</span></span></label>
+            <label class="sw-check"><input type="checkbox" id="sim-opt-courses" onchange="calcul()"><span class="sw-ci"><svg width="10" height="8" viewBox="0 0 12 9" fill="none"><path d="M1 4L4.5 7.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="sw-ct"><strong>Courses</strong><span>+50 €</span></span></label>
           </div>
         </div>
         <div class="sw-sec">
           <label class="sw-toggle green"><div class="sw-ti"><strong>Première prestation</strong><span>−10 € offerts</span></div><label style="position:relative;flex-shrink:0;"><input type="checkbox" id="sim-toggle-premiere" onchange="calcul()" style="opacity:0;width:0;height:0;position:absolute;"><span class="sw-track"></span></label></label>
-          <label class="sw-toggle"><div class="sw-ti"><strong>Engagement 4 prestations</strong><span>−15% sur la main d'œuvre</span></div><label style="position:relative;flex-shrink:0;"><input type="checkbox" id="sim-toggle-fidelite" onchange="calcul()" style="opacity:0;width:0;height:0;position:absolute;"><span class="sw-track"></span></label></label>
+          <label class="sw-toggle"><div class="sw-ti"><strong>Engagement 4 prestations</strong><span>−10% sur la main d'œuvre</span></div><label style="position:relative;flex-shrink:0;"><input type="checkbox" id="sim-toggle-fidelite" onchange="calcul()" style="opacity:0;width:0;height:0;position:absolute;"><span class="sw-track"></span></label></label>
         </div>
         <div class="sw-result">
           <div class="sw-rh">Estimation de votre prestation</div>
           <div class="sw-rl">
             <div class="sw-rline">Forfait préparation & nettoyage<span>50,00 €</span></div>
-            <div class="sw-rline" id="sim-line-diners" style="display:none"><span id="sim-lbl-diners"></span><span id="sim-val-diners-price"></span></div>
-            <div class="sw-rline" id="sim-line-lunch" style="display:none"><span id="sim-lbl-lunch"></span><span id="sim-val-lunch-price"></span></div>
-            <div class="sw-rline" id="sim-line-petitdej" style="display:none">Petits-déj & goûters<span>50,00 €</span></div>
-            <div class="sw-rline" id="sim-line-bebe" style="display:none">Petits pots bébé<span>50,00 €</span></div>
-            <div class="sw-rline" id="sim-line-courses" style="display:none">Courses fraîches<span>30,00 €</span></div>
-            <div class="sw-rline" id="sim-line-fourche" style="display:none">La Fourche<span>5,00 €</span></div>
+            <div class="sw-rline" id="sim-line-repas" style="display:none"><span id="sim-lbl-repas"></span><span id="sim-val-repas-price"></span></div>
+            <div class="sw-rline" id="sim-line-petitdej" style="display:none"><span id="sim-lbl-pdj"></span><span id="sim-val-pdj-price"></span></div>
+            <div class="sw-rline" id="sim-line-bebe" style="display:none">Petits pots bébé<span>+50,00 €</span></div>
+            <div class="sw-rline" id="sim-line-courses" style="display:none">Courses<span>+50,00 €</span></div>
             <div class="sw-rdiv"></div>
             <div class="sw-rline tot">Total brut<span id="sim-val-brut">—</span></div>
-            <div class="sw-rline rem" id="sim-line-remise" style="display:none">Remise fidélité −15%<span id="sim-val-remise"></span></div>
+            <div class="sw-rline rem" id="sim-line-remise" style="display:none">Remise fidélité −10%<span id="sim-val-remise"></span></div>
             <div class="sw-rline rem" id="sim-line-premiere" style="display:none">Offre bienvenue<span>−10,00 €</span></div>
             <div class="sw-rline ci">Crédit d'impôt 50% (MO)<span id="sim-val-ci">—</span></div>
           </div>
@@ -564,10 +560,10 @@ footer a:hover { color: #fff; }
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-const TARIF = { horaire:50, forfaitBase:1, minDiner:8, minLunchbox:6, forfaitPetitDej:50, forfaitBebe:50, courses:30, fourcheWeek:5, remiseFidelite:0.15, creditImpot:0.50, promoPremiereCmd:10 };
-const vals = { adultes:2, enfants:0, bebes:0, diners:4, lunchbox:0 };
-const mins = { adultes:1, enfants:0, bebes:0, diners:0, lunchbox:0 };
-const maxs = { adultes:8, enfants:8, bebes:4, diners:7, lunchbox:7 };
+const TARIF = { horaire:50, forfaitBase:1, minRepas:8, courses:50, remiseFidelite:0.10, creditImpot:0.50, promoPremiereCmd:10 };
+const vals = { adultes:2, enfants:0, bebes:0, repas:5 };
+const mins = { adultes:1, enfants:0, bebes:0, repas:0 };
+const maxs = { adultes:8, enfants:8, bebes:4, repas:14 };
 
 function toggleSim(btn) {
   const w = document.getElementById('sim-wrap');
@@ -582,48 +578,66 @@ function eur(n) { return Math.max(0,n).toLocaleString('fr-FR',{minimumFractionDi
 function show(id,v){ const el=document.getElementById('sim-'+id); if(el) el.style.display=v?'':'none'; }
 function simStep(k,d){ vals[k]=Math.min(maxs[k],Math.max(mins[k],vals[k]+d)); document.getElementById('sim-val-'+k).textContent=vals[k]; calcul(); }
 
+function roundUp50(v){return Math.ceil(v*2)/2;}
+
 function calcul(){
-  const {adultes,enfants,bebes,diners,lunchbox}=vals;
+  const {adultes,enfants,bebes,repas}=vals;
   const tot=adultes+enfants;
-  const hMO=TARIF.forfaitBase+(TARIF.minDiner*tot*diners/60)+(TARIF.minLunchbox*adultes*lunchbox/60);
-  const MO=hMO*TARIF.horaire;
+
+  // Afficher/masquer l'option petits pots bébé
+  const bebeWrap=document.getElementById('sim-opt-bebe-wrap');
+  if(bebeWrap) bebeWrap.style.display=bebes>0?'':'none';
+  const oBBel=document.getElementById('sim-opt-bebe');
+  if(bebes===0&&oBBel) oBBel.checked=false;
+
   const oPD=document.getElementById('sim-opt-petitdej')?.checked;
-  const oBB=document.getElementById('sim-opt-bebe')?.checked;
+  const oBB=document.getElementById('sim-opt-bebe')?.checked&&bebes>0;
   const oC=document.getElementById('sim-opt-courses')?.checked;
-  const oF=document.getElementById('sim-opt-fourche')?.checked;
   const oFi=document.getElementById('sim-toggle-fidelite')?.checked;
   const oPC=document.getElementById('sim-toggle-premiere')?.checked;
-  const optMO=(oPD?50:0)+(oBB?50:0);
-  const optH=(oC?30:0)+(oF?5:0);
-  const tMO=MO+optMO;
-  const remise=oFi?tMO*TARIF.remiseFidelite:0;
-  const MOar=tMO-remise;
-  const brut=MOar+optH;
-  const ci=MOar*TARIF.creditImpot;
-  const net=brut-ci-(oPC?10:0);
-  const portions=(tot*diners)+(adultes*lunchbox);
-  // Afficher La Fourche uniquement si engagement 4 prestations activé
-  const fourcheOption = document.getElementById('fourche-option');
-  if (fourcheOption) fourcheOption.style.display = oFi ? '' : 'none';
-  if (!oFi && document.getElementById('sim-opt-fourche')) document.getElementById('sim-opt-fourche').checked = false;
 
-  show('line-diners',diners>0);
-  const ld=document.getElementById('sim-lbl-diners'); if(ld) ld.textContent=`Dîners (${diners}/sem. · ${tot} pers.)`;
-  const vd=document.getElementById('sim-val-diners-price'); if(vd) vd.textContent=eur((TARIF.minDiner*tot*diners/60)*TARIF.horaire);
-  show('line-lunch',lunchbox>0);
-  const ll=document.getElementById('sim-lbl-lunch'); if(ll) ll.textContent=`Lunchbox (${lunchbox}/sem. · ${adultes} adultes)`;
-  const vl=document.getElementById('sim-val-lunch-price'); if(vl) vl.textContent=eur((TARIF.minLunchbox*adultes*lunchbox/60)*TARIF.horaire);
-  show('line-petitdej',oPD); show('line-bebe',oBB); show('line-courses',oC); show('line-fourche',oF);
+  // Main d'œuvre : forfait 1h + repas
+  const moBase=roundUp50((TARIF.forfaitBase+(TARIF.minRepas*tot*repas/60))*TARIF.horaire);
+
+  // Remise fidélité −10% sur MO base uniquement
+  const remise=oFi?roundUp50(moBase*TARIF.remiseFidelite):0;
+  const moNette=Math.max(0,moBase-remise);
+
+  // Options forfaitaires soumises au crédit d'impôt
+  const pdjMontant=oPD?(tot<=2?20:tot<=4?35:50):0;
+  const bebeMontant=oBB?50:0;
+  const totalSAP=moNette+pdjMontant+bebeMontant;
+
+  // Courses hors crédit d'impôt
+  const coursesMontant=oC?TARIF.courses:0;
+  const brut=totalSAP+coursesMontant;
+  const ci=totalSAP*TARIF.creditImpot;
+  const net=brut-ci-(oPC?TARIF.promoPremiereCmd:0);
+
+  // Mise à jour label prix petit-déj
+  const pdjPrixLbl=document.getElementById('sim-lbl-pdj-prix');
+  if(pdjPrixLbl) pdjPrixLbl.textContent=tot<=2?'+20 €':tot<=4?'+35 €':'+50 €';
+
+  // Lignes résultat
+  show('line-repas',repas>0&&tot>0);
+  const lr=document.getElementById('sim-lbl-repas'); if(lr) lr.textContent=`${repas} repas × ${tot} pers. × 8 min`;
+  const vr2=document.getElementById('sim-val-repas-price'); if(vr2) vr2.textContent='+'+eur((TARIF.minRepas*tot*repas/60)*TARIF.horaire);
+  show('line-petitdej',oPD);
+  const lpd=document.getElementById('sim-lbl-pdj'); if(lpd) lpd.textContent=`Petit-déj & goûters (${tot} pers.)`;
+  const vpd=document.getElementById('sim-val-pdj-price'); if(vpd) vpd.textContent='+'+eur(pdjMontant);
+  show('line-bebe',oBB);
+  show('line-courses',oC);
   show('line-remise',oFi&&remise>0);
-  const vr=document.getElementById('sim-val-remise'); if(vr) vr.textContent='−'+eur(remise);
+  const vrem=document.getElementById('sim-val-remise'); if(vrem) vrem.textContent='−'+eur(remise);
   show('line-premiere',oPC);
   document.getElementById('sim-val-brut').textContent=eur(brut);
   document.getElementById('sim-val-ci').textContent='−'+eur(ci);
   document.getElementById('sim-val-net').textContent=eur(net);
+  const portions=tot*repas;
   const pp=document.getElementById('sim-parportion'); if(pp) pp.style.display=(portions>0&&net>0)?'':'none';
   const vppp=document.getElementById('sim-val-parportion'); if(vppp&&portions>0) vppp.textContent=eur(net/portions)+'/portion';
   const note=document.getElementById('sim-note');
-  if(note) note.textContent=oC?'Les courses fraîches ne sont pas incluses dans le coût net ni dans le crédit d\'impôt.':'';
+  if(note) note.textContent=oC?'Les courses ne sont pas incluses dans le coût net ni dans le crédit d\'impôt.':'';
 }
 
 function submitForm(e) {
