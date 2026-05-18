@@ -604,7 +604,7 @@ function calcul(){
   const moNette=Math.max(0,moBase-remise);
 
   // Options forfaitaires soumises au crédit d'impôt
-  const pdjMontant=oPD?(tot<=2?20:tot<=4?35:50):0;
+  const pdjMontant=oPD?(tot===1?20:tot===2?25:tot===3?30:50):0;
   const bebeMontant=oBB?50:0;
   const totalSAP=moNette+pdjMontant+bebeMontant;
 
@@ -616,7 +616,7 @@ function calcul(){
 
   // Mise à jour label prix petit-déj
   const pdjPrixLbl=document.getElementById('sim-lbl-pdj-prix');
-  if(pdjPrixLbl) pdjPrixLbl.textContent=tot<=2?'+20 €':tot<=4?'+35 €':'+50 €';
+  if(pdjPrixLbl) pdjPrixLbl.textContent=tot===1?'+20 €':tot===2?'+25 €':tot===3?'+30 €':'+50 €';
 
   // Lignes résultat
   show('line-repas',repas>0&&tot>0);
