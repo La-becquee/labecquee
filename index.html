@@ -425,7 +425,7 @@ footer a:hover { color: #fff; }
             <div class="sw-rline rem" id="sim-line-premiere" style="display:none">Offre bienvenue<span>−10,00 €</span></div>
             <div class="sw-rline ci">Crédit d'impôt 50% (MO)<span id="sim-val-ci">—</span></div>
           </div>
-          <div class="sw-rnet"><div class="sw-rnl">Coût réel après crédit d'impôt<small>par prestation · hors courses</small></div><div class="sw-rna" id="sim-val-net">—</div></div>
+          <div class="sw-rnet"><div class="sw-rnl">Coût réel après crédit d'impôt<small>par prestation</small></div><div class="sw-rna" id="sim-val-net">—</div></div>
           <div id="sim-parportion" class="sw-pp" style="display:none">Soit environ <strong id="sim-val-parportion" style="color:var(--rose)"></strong> préparée</div>
           <div id="sim-note" class="sw-note"></div>
         </div>
@@ -608,10 +608,9 @@ function calcul(){
   const bebeMontant=oBB?50:0;
   const totalSAP=moNette+pdjMontant+bebeMontant;
 
-  // Courses hors crédit d'impôt
   const coursesMontant=oC?TARIF.courses:0;
   const brut=totalSAP+coursesMontant;
-  const ci=totalSAP*TARIF.creditImpot;
+  const ci=brut*TARIF.creditImpot;
   const net=brut-ci-(oPC?TARIF.promoPremiereCmd:0);
 
   // Mise à jour label prix petit-déj
@@ -637,7 +636,7 @@ function calcul(){
   const pp=document.getElementById('sim-parportion'); if(pp) pp.style.display=(portions>0&&net>0)?'':'none';
   const vppp=document.getElementById('sim-val-parportion'); if(vppp&&portions>0) vppp.textContent=eur(net/portions)+'/portion';
   const note=document.getElementById('sim-note');
-  if(note) note.textContent=oC?'Les courses ne sont pas incluses dans le coût net ni dans le crédit d\'impôt.':'';
+  if(note) note.textContent='';
 }
 
 function submitForm(e) {
