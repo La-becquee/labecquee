@@ -24,11 +24,15 @@ body { font-family: 'DM Sans', sans-serif; background: var(--beige); color: var(
 nav {
   position: sticky; top: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 6vw; height: 68px;
+  padding: 0 6vw; height: 80px;
   background: var(--beige);
   border-bottom: 1px solid var(--beige-dd);
   box-shadow: 0 2px 12px rgba(110,15,45,.06);
 }
+.nav-sap { display: inline-flex; line-height: 0; flex-shrink: 0; margin-left: 20px; padding: 4px; }
+.nav-sap img { width: 100px; height: auto; min-width: 60px; }
+.nav-sap:hover { opacity: .85; }
+@media (max-width: 640px) { .nav-sap img { width: 72px; } }
 .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
 .nav-links a { font-size: .88rem; font-weight: 500; color: var(--pourpre); text-decoration: none; transition: color .15s; }
 .nav-links a:hover { color: var(--rose); }
@@ -269,11 +273,7 @@ footer strong { color: rgba(255,255,255,.9); }
 footer a { color: rgba(255,255,255,.5); text-decoration: none; }
 footer a:hover { color: #fff; }
 .footer-villes { color: rgba(255,255,255,.45); font-size: .73rem; margin-top: 6px; }
-.footer-logos { display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,.15); margin: 20px auto 0; padding-top: 20px; max-width: 480px; }
-.footer-logos img.logo-becquee { height: 42px; width: auto; filter: brightness(0) invert(1); opacity: .8; }
-.footer-logos .logo-sep { width: 1px; height: 44px; background: rgba(255,255,255,.2); flex-shrink: 0; }
-.footer-logos a.sap-link { display: inline-flex; line-height: 0; opacity: .9; transition: opacity .2s; }
-.footer-logos a.sap-link:hover { opacity: 1; }
+
 </style>
 </head>
 <body>
@@ -293,13 +293,18 @@ footer a:hover { color: #fff; }
 
 <!-- NAV -->
 <nav>
-  <a href="#" style="display:flex; align-items:center;"><img src="logo.png" alt="La Becquée" style="height:140px; width:auto; display:block; margin-top:30px;"></a>
+  <a href="#" style="display:flex; align-items:center;"><img src="logo.png" alt="La Becquée" style="height:60px; width:auto; display:block;"></a>
   <ul class="nav-links">
     <li><a href="#catalogue">Les plats</a></li>
     <li><a href="#concept">Le concept</a></li>
     <li><a href="#tarifs">Tarifs</a></li>
     <li><a href="https://calendly.com/labecquee78/30min" target="_blank" class="nav-cta">Prendre RDV</a></li>
   </ul>
+  <!-- Traceur Services à la personne — top droite — zone de protection : padding 4px, gap 20px -->
+  <a class="nav-sap" href="https://www.servicesalapersonne.gouv.fr" target="_blank" rel="noopener noreferrer"
+     title="La Becquée — organisme déclaré Services à la personne">
+    <img src="sap-traceur.png" alt="Services à la personne — organisme déclaré">
+  </a>
 </nav>
 
 <!-- HERO -->
@@ -563,17 +568,6 @@ footer a:hover { color: #fff; }
   </div>
   <div class="footer-villes">Cuisine à domicile & batch cooking · Yvelines (78) & Val d'Oise (95) · Mézy-sur-Seine · Meulan-en-Yvelines · Mantes-la-Jolie · Mantes-la-Ville · Les Mureaux · Aubergenville · Épône · Limay · Rosny-sur-Seine · Bonnières-sur-Seine · Hardricourt · Juziers · Verneuil-sur-Seine · Vernouillet · Triel-sur-Seine · Flins-sur-Seine · Gargenville · Vaux-sur-Seine · Chapet · Chanteloup-les-Vignes · Poissy · Conflans-Sainte-Honorine · Andrésy · Saint-Germain-en-Laye · Cergy · Pontoise · Vauréal · Menucourt · Boisemont · Courdimanche</div>
 
-  <!-- CO-SIGNATURE : Logo La Becquée + Traceur Services à la personne -->
-  <!-- Charte SAP : version contour blanc, fond sombre, largeur 120px, zone de protection respectée -->
-  <!-- Pour remplacer le SVG par le PNG officiel : télécharger sur l'espace pro NOVA -->
-  <!-- https://www.servicesalapersonne.gouv.fr → espace professionnel → outils communication -->
-  <div class="footer-logos">
-    <!-- Traceur officiel Services à la personne -->
-    <a class="sap-link" href="https://www.servicesalapersonne.gouv.fr" target="_blank" rel="noopener noreferrer"
-       title="La Becquée — organisme déclaré Services à la personne">
-      <img src="sap-traceur.png" alt="Services à la personne — organisme déclaré" style="width:120px; height:auto;">
-    </a>
-  </div>
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
