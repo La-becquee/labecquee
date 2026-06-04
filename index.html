@@ -269,6 +269,11 @@ footer strong { color: rgba(255,255,255,.9); }
 footer a { color: rgba(255,255,255,.5); text-decoration: none; }
 footer a:hover { color: #fff; }
 .footer-villes { color: rgba(255,255,255,.45); font-size: .73rem; margin-top: 6px; }
+.footer-logos { display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,.15); margin: 20px auto 0; padding-top: 20px; max-width: 480px; }
+.footer-logos img.logo-becquee { height: 42px; width: auto; filter: brightness(0) invert(1); opacity: .8; }
+.footer-logos .logo-sep { width: 1px; height: 44px; background: rgba(255,255,255,.2); flex-shrink: 0; }
+.footer-logos a.sap-link { display: inline-flex; line-height: 0; opacity: .9; transition: opacity .2s; }
+.footer-logos a.sap-link:hover { opacity: 1; }
 </style>
 </head>
 <body>
@@ -557,6 +562,34 @@ footer a:hover { color: #fff; }
     <a href="https://www.facebook.com/profile.php?id=61574389662485" target="_blank" style="color:rgba(255,255,255,.65); text-decoration:none; font-size:.8rem;">Facebook</a>
   </div>
   <div class="footer-villes">Cuisine à domicile & batch cooking · Yvelines (78) & Val d'Oise (95) · Mézy-sur-Seine · Meulan-en-Yvelines · Mantes-la-Jolie · Mantes-la-Ville · Les Mureaux · Aubergenville · Épône · Limay · Rosny-sur-Seine · Bonnières-sur-Seine · Hardricourt · Juziers · Verneuil-sur-Seine · Vernouillet · Triel-sur-Seine · Flins-sur-Seine · Gargenville · Vaux-sur-Seine · Chapet · Chanteloup-les-Vignes · Poissy · Conflans-Sainte-Honorine · Andrésy · Saint-Germain-en-Laye · Cergy · Pontoise · Vauréal · Menucourt · Boisemont · Courdimanche</div>
+
+  <!-- CO-SIGNATURE : Logo La Becquée + Traceur Services à la personne -->
+  <!-- Charte SAP : version contour blanc, fond sombre, largeur 120px, zone de protection respectée -->
+  <!-- Pour remplacer le SVG par le PNG officiel : télécharger sur l'espace pro NOVA -->
+  <!-- https://www.servicesalapersonne.gouv.fr → espace professionnel → outils communication -->
+  <div class="footer-logos">
+    <img class="logo-becquee" src="logo.png" alt="La Becquée Cuisine Familiale">
+    <div class="logo-sep"></div>
+    <!-- Traceur officiel Services à la personne — version blanche (fond sombre) -->
+    <a class="sap-link" href="https://www.servicesalapersonne.gouv.fr" target="_blank" rel="noopener noreferrer"
+       title="La Becquée — organisme déclaré Services à la personne">
+      <svg xmlns="http://www.w3.org/2000/svg" width="120" height="62" viewBox="0 0 120 62" role="img" aria-label="Services à la personne — organisme déclaré">
+        <!-- Cadre badge -->
+        <rect x="1" y="1" width="118" height="60" rx="7" fill="none" stroke="white" stroke-width="1.4"/>
+        <!-- Icône personne + cœur (motif officiel SAP) -->
+        <circle cx="19" cy="17" r="5.5" fill="none" stroke="white" stroke-width="1.5"/>
+        <path d="M10.5 34 C10.5 26 27.5 26 27.5 34" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M19 52 C13 47.5 8 44 8 39.5 C8 36.5 10.5 34.5 13.5 36.5 L19 40 L24.5 36.5 C27.5 34.5 30 36.5 30 39.5 C30 44 25 47.5 19 52Z" fill="white" opacity="0.85"/>
+        <!-- Texte principal -->
+        <text x="36" y="24" font-family="'DM Sans', Arial, sans-serif" font-size="9.5" fill="white" font-weight="700" letter-spacing="0.3">services à la</text>
+        <text x="36" y="36" font-family="'DM Sans', Arial, sans-serif" font-size="9.5" fill="white" font-weight="700" letter-spacing="0.3">personne</text>
+        <!-- Ligne séparatrice -->
+        <line x1="36" y1="41" x2="112" y2="41" stroke="rgba(255,255,255,0.35)" stroke-width="0.8"/>
+        <!-- Sous-texte -->
+        <text x="36" y="52" font-family="'DM Sans', Arial, sans-serif" font-size="7.2" fill="rgba(255,255,255,0.7)" letter-spacing="0.2">organisme déclaré</text>
+      </svg>
+    </a>
+  </div>
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
