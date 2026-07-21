@@ -419,19 +419,16 @@ footer a:hover { color: #fff; }
         </div>
         <div class="sw-sec">
           <label class="sw-toggle green"><div class="sw-ti"><strong>Première prestation</strong><span>−10 € offerts</span></div><label style="position:relative;flex-shrink:0;"><input type="checkbox" id="sim-toggle-premiere" onchange="calcul()" style="opacity:0;width:0;height:0;position:absolute;"><span class="sw-track"></span></label></label>
-          <label class="sw-toggle"><div class="sw-ti"><strong>Engagement 4 prestations</strong><span>−10% sur la main d'œuvre</span></div><label style="position:relative;flex-shrink:0;"><input type="checkbox" id="sim-toggle-fidelite" onchange="calcul()" style="opacity:0;width:0;height:0;position:absolute;"><span class="sw-track"></span></label></label>
         </div>
         <div class="sw-result">
           <div class="sw-rh">Estimation de votre prestation</div>
           <div class="sw-rl">
-            <div class="sw-rline">Forfait préparation & nettoyage<span>50,00 €</span></div>
-            <div class="sw-rline" id="sim-line-repas" style="display:none"><span id="sim-lbl-repas"></span><span id="sim-val-repas-price"></span></div>
+            <div class="sw-rline" id="sim-line-repas" style="display:none">Main d'œuvre<span id="sim-val-repas-price"></span></div>
             <div class="sw-rline" id="sim-line-petitdej" style="display:none"><span id="sim-lbl-pdj"></span><span id="sim-val-pdj-price"></span></div>
             <div class="sw-rline" id="sim-line-bebe" style="display:none">Petits pots bébé<span>+50,00 €</span></div>
             <div class="sw-rline" id="sim-line-courses" style="display:none">Courses<span>+50,00 €</span></div>
             <div class="sw-rdiv"></div>
             <div class="sw-rline tot">Total brut<span id="sim-val-brut">—</span></div>
-            <div class="sw-rline rem" id="sim-line-remise" style="display:none">Remise fidélité −10%<span id="sim-val-remise"></span></div>
             <div class="sw-rline rem" id="sim-line-premiere" style="display:none">Offre bienvenue<span>−10,00 €</span></div>
             <div class="sw-rline ci">Crédit d'impôt 50% (MO)<span id="sim-val-ci">—</span></div>
           </div>
@@ -571,7 +568,7 @@ footer a:hover { color: #fff; }
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-const TARIF = { horaire:50, forfaitBase:1, minRepas:8, courses:50, remiseFidelite:0.10, creditImpot:0.50, promoPremiereCmd:10 };
+const TARIF = { horaire:50, minRepas:8, courses:50, creditImpot:0.50, promoPremiereCmd:10 };
 const vals = { adultes:2, enfants:0, bebes:0, repas:5 };
 const mins = { adultes:1, enfants:0, bebes:0, repas:0 };
 const maxs = { adultes:8, enfants:8, bebes:4, repas:14 };
@@ -604,15 +601,12 @@ function calcul(){
   const oPD=document.getElementById('sim-opt-petitdej')?.checked;
   const oBB=document.getElementById('sim-opt-bebe')?.checked&&bebes>0;
   const oC=document.getElementById('sim-opt-courses')?.checked;
-  const oFi=document.getElementById('sim-toggle-fidelite')?.checked;
   const oPC=document.getElementById('sim-toggle-premiere')?.checked;
 
-  // Main d'œuvre : forfait 1h + repas
-  const moBase=roundUp50((TARIF.forfaitBase+(TARIF.minRepas*tot*repas/60))*TARIF.horaire);
-
-  // Remise fidélité −10% sur MO base uniquement
-  const remise=oFi?roundUp50(moBase*TARIF.remiseFidelite):0;
-  const moNette=Math.max(0,moBase-remise);
+  // Main d'œuvre : heures + forfait nettoyage (50€ par tranche de 5 repas, silencieux)
+  const forfaitNettoyage=repas>0?Math.ceil(repas/5)*50:0;
+  const moBase=roundUp50((TARIF.minRepas*tot*repas/60)*TARIF.horaire)+forfaitNettoyage;
+  const moNette=moBase;
 
   // Options forfaitaires soumises au crédit d'impôt
   const pdjMontant=oPD?(tot===1?20:tot===2?25:tot===3?30:50):0;
@@ -630,15 +624,12 @@ function calcul(){
 
   // Lignes résultat
   show('line-repas',repas>0&&tot>0);
-  const lr=document.getElementById('sim-lbl-repas'); if(lr) lr.textContent=`${repas} repas × ${tot} pers. × 8 min`;
-  const vr2=document.getElementById('sim-val-repas-price'); if(vr2) vr2.textContent='+'+eur((TARIF.minRepas*tot*repas/60)*TARIF.horaire);
+  const vr2=document.getElementById('sim-val-repas-price'); if(vr2) vr2.textContent=eur(moBase);
   show('line-petitdej',oPD);
   const lpd=document.getElementById('sim-lbl-pdj'); if(lpd) lpd.textContent=`Petit-déj & goûters (${tot} pers.)`;
   const vpd=document.getElementById('sim-val-pdj-price'); if(vpd) vpd.textContent='+'+eur(pdjMontant);
   show('line-bebe',oBB);
   show('line-courses',oC);
-  show('line-remise',oFi&&remise>0);
-  const vrem=document.getElementById('sim-val-remise'); if(vrem) vrem.textContent='−'+eur(remise);
   show('line-premiere',oPC);
   document.getElementById('sim-val-brut').textContent=eur(brut);
   document.getElementById('sim-val-ci').textContent='−'+eur(ci);
