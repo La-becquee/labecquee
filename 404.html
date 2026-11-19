@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Becquée devient Beck's Kitchen</title>
+<meta name="description" content="La Becquée devient Beck's Kitchen : batch cooking à domicile dans les Yvelines et le Val d'Oise. Le site a déménagé sur beckskitchen.fr.">
+<meta http-equiv="refresh" content="0; url=https://beckskitchen.fr/">
+<link rel="canonical" href="https://beckskitchen.fr/">
+<script>
+  // Anciennes ancres de La Becquée -> bon endroit du nouveau site
+  var cibles = { '#mentions': 'mentions-legales.html', '#contact': '#rendez-vous', '#tarifs': '#tarifs', '#concept': '#concept', '#catalogue': '#plats', '#benefices': '#concept', '#hero': '' };
+  var h = location.hash, c = (h in cibles) ? cibles[h] : '';
+  location.replace('https://beckskitchen.fr/' + c);
+</script>
+<style>
+  body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+         background: #fff0de; color: #1a5a4d; font: 1.1rem/1.6 system-ui, sans-serif; text-align: center; padding: 24px; }
+  a { color: #a22f21; font-weight: 700; }
+</style>
+</head>
+<body>
+  <p>La Becquée devient Beck's Kitchen.<br>
+  Le site a déménagé : <a href="https://beckskitchen.fr/">beckskitchen.fr</a></p>
+</body>
+</html>
